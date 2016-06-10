@@ -11,8 +11,9 @@
 package View;
 import com.sun.glass.events.KeyEvent;
 import javax.swing.JOptionPane;
+import Controller.ConsultaController;
 public class InterfaceLogin extends javax.swing.JFrame {
-
+    ConsultaController consulta=new ConsultaController();
     /**
      * Creates new form InterfaceLogin
      */
@@ -43,7 +44,7 @@ public class InterfaceLogin extends javax.swing.JFrame {
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
 
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Error-icon.png"))); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +66,6 @@ public class InterfaceLogin extends javax.swing.JFrame {
         btConectar.setText("Conectar");
         btConectar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btConectar.setPreferredSize(new java.awt.Dimension(87, 41));
-        btConectar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/conectar.jpg"))); // NOI18N
         btConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConectarActionPerformed(evt);
@@ -134,9 +134,9 @@ public class InterfaceLogin extends javax.swing.JFrame {
 
     private void btConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConectarActionPerformed
         String password=String.valueOf(campoSenha.getPassword());
-        if(campoUsuario.getText().equals("lab")&&password.equals("123")){
-            InterfacePrincipal executar=new InterfacePrincipal();
-            executar.setVisible(true);
+        if(consulta.login(this.campoUsuario.getText(), password)){
+            InterfacePrincipal abrir=new InterfacePrincipal();
+            abrir.setVisible(true);
             this.dispose();
         }
         else{
@@ -149,17 +149,7 @@ public class InterfaceLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
-        String password=String.valueOf(campoSenha.getPassword());
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            if(campoUsuario.getText().equals("lab")&&password.equals("123")){
-            InterfacePrincipal executar=new InterfacePrincipal();
-            executar.setVisible(true);
-            this.dispose();
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorreto(s)!");
-        }
-        }
+
     }//GEN-LAST:event_campoSenhaKeyPressed
 
     /**

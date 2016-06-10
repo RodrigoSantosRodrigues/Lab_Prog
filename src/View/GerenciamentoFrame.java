@@ -9,8 +9,9 @@
  * @author Aluno
  */
 package View;
+import Controller.GerenciamentoController;
 public class GerenciamentoFrame extends javax.swing.JFrame {
-
+    GerenciamentoController gerenciamento=new GerenciamentoController();
     /**
      * Creates new form GerenciamentoFrame
      */
@@ -69,7 +70,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         selecaoAr = new javax.swing.JCheckBox();
         selecaoWifi = new javax.swing.JCheckBox();
-        selecaoWifi1 = new javax.swing.JCheckBox();
+        selecaoFrigobar = new javax.swing.JCheckBox();
         btCadastrarQuarto = new javax.swing.JButton();
         btSairQuarto = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
@@ -115,7 +116,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         jLabel15.setText("Senha:");
 
         btLimpar.setText("Limpar");
-        btLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -124,7 +125,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
 
         btSairCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSairCadastro.setText("Sair");
-        btSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSairCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairCadastroActionPerformed(evt);
@@ -132,7 +133,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         });
 
         btCadastrar.setText("Cadastrar");
-        btCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -269,7 +270,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         jLabel17.setText("Categoria do quarto:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel8.setText("Diária:");
 
@@ -279,14 +280,14 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
 
         jLabel19.setText("Frigobar:");
 
-        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoWifi1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btCadastrarQuarto.setText("Cadastrar");
-        btCadastrarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastrarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastrarQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarQuartoActionPerformed(evt);
@@ -295,7 +296,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
 
         btSairQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSairQuarto.setText("Sair");
-        btSairQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSairQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSairQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairQuartoActionPerformed(evt);
@@ -321,7 +322,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel19))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(selecaoWifi1)
+                                    .addComponent(selecaoFrigobar)
                                     .addComponent(selecaoAr)
                                     .addComponent(selecaoWifi)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -368,7 +369,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19)
-                    .addComponent(selecaoWifi1))
+                    .addComponent(selecaoFrigobar))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastrarQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,7 +396,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
 
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -403,7 +404,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         });
 
         btConsultar.setText("Consultar quarto");
-        btConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConsultarActionPerformed(evt);
@@ -411,16 +412,16 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         });
 
         btEmitir.setText("Emitir relatórios");
-        btEmitir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEmitir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btExibirRelatorios.setText("Exibir relatórios");
-        btExibirRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btExibirRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btExibirRelatorios.setMaximumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setMinimumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setPreferredSize(new java.awt.Dimension(113, 23));
 
         btCadastroFunc.setText("Cadastrar funcionário");
-        btCadastroFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastroFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastroFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroFuncActionPerformed(evt);
@@ -428,7 +429,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
         });
 
         btCadastroQuartos.setText("Cadastrar quarto");
-        btCadastroQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastroQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastroQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroQuartosActionPerformed(evt);
@@ -532,6 +533,28 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairQuartoActionPerformed
 
     private void btCadastrarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarQuartoActionPerformed
+        int selecaoArInt,selecaoWifiInt,selecaoFrigobarInt;
+        int valorSpinner=Integer.parseInt(this.giratorioNumQuarto.getValue().toString());
+        if(this.selecaoAr.isSelected()){
+            selecaoArInt=1;
+        }
+        else{
+            selecaoArInt=0;
+        }
+        if(this.selecaoWifi.isSelected()){
+            selecaoWifiInt=1;
+        }
+        else{
+            selecaoWifiInt=0;
+        }
+        if(this.selecaoFrigobar.isSelected()){
+            selecaoFrigobarInt=1;
+        }
+        else{
+            selecaoFrigobarInt=0;
+        }
+        gerenciamento.cadastrarQuarto(valorSpinner,String.valueOf(this.jComboBox1.getSelectedItem()),"Desocupado",
+                Double.parseDouble(this.campoPreco.getText()),selecaoArInt,selecaoWifiInt,selecaoFrigobarInt);
         frameCadastroQuarto.dispose();
     }//GEN-LAST:event_btCadastrarQuartoActionPerformed
 
@@ -628,7 +651,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JCheckBox selecaoAr;
+    private javax.swing.JCheckBox selecaoFrigobar;
     private javax.swing.JCheckBox selecaoWifi;
-    private javax.swing.JCheckBox selecaoWifi1;
     // End of variables declaration//GEN-END:variables
 }

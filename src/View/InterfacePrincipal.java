@@ -12,8 +12,9 @@ package View;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Controller.ConsultaController;
 public class InterfacePrincipal extends javax.swing.JFrame {
-
+    ConsultaController consultas=new ConsultaController();
     /**
      * Creates new form InterfacePrincipal
      */
@@ -42,6 +43,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        btAlternar = new javax.swing.JButton();
         menuGeral = new javax.swing.JMenuBar();
         menuConsulta = new javax.swing.JMenu();
         menuConsultar = new javax.swing.JMenuItem();
@@ -55,13 +57,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         msgSair.setTitle("Deseja realmente sair?");
         msgSair.setLocation(new java.awt.Point(500, 250));
         msgSair.setMinimumSize(new java.awt.Dimension(190, 90));
-        msgSair.setPreferredSize(new java.awt.Dimension(190, 90));
         msgSair.setResizable(false);
 
         painelSair.setPreferredSize(new java.awt.Dimension(45, 45));
 
         btSim.setText("Sim");
-        btSim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSim.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSimActionPerformed(evt);
@@ -69,7 +70,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         });
 
         btNao.setText("Não");
-        btNao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btNao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btNao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNaoActionPerformed(evt);
@@ -114,7 +115,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         painelPrincipal.setToolTipText("");
 
-        btConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consulta.png"))); // NOI18N
+        btConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/consulta.png"))); // NOI18N
         btConsulta.setText("Consulta de quartos");
         btConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +124,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon-reserve.png"))); // NOI18N
+        btReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon-reserve.png"))); // NOI18N
         btReserva.setText("Reservar quarto");
         btReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btReserva.setMaximumSize(new java.awt.Dimension(389, 265));
@@ -135,7 +136,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btGerenciamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmonstr-gear-10-icon-256.png"))); // NOI18N
+        btGerenciamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconmonstr-gear-10-icon-256.png"))); // NOI18N
         btGerenciamento.setText("Gerenciamento");
         btGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btGerenciamento.setMaximumSize(new java.awt.Dimension(389, 265));
@@ -147,7 +148,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Error-icon.png"))); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -159,12 +160,20 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/hotel.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
+        btAlternar.setText("Alternar usuário");
+        btAlternar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btAlternar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlternarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,8 +184,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                             .addComponent(jSeparator2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btAlternar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btSair)))
                 .addContainerGap())
         );
@@ -197,16 +208,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addComponent(btGerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btSair)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAlternar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
         );
 
-        menuGeral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuGeral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         menuConsulta.setText("Arquivo");
+        menuConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuConsultar.setText("Consulta de quartos");
-        menuConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuConsultarActionPerformed(evt);
@@ -215,7 +229,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuConsultar);
 
         menuHospedar.setText("Reservar quarto");
-        menuHospedar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuHospedar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuHospedar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuHospedarActionPerformed(evt);
@@ -224,7 +238,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuHospedar);
 
         menuGerenciamento.setText("Gerenciamento");
-        menuGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuGerenciamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuGerenciamentoActionPerformed(evt);
@@ -233,7 +247,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuGerenciamento);
 
         menuSair.setText("Sair");
-        menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSairActionPerformed(evt);
@@ -244,9 +258,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuGeral.add(menuConsulta);
 
         menuAjuda.setText("Ajuda");
+        menuAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuSobre.setText("Sobre");
-        menuSobre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuSobre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSobreActionPerformed(evt);
@@ -295,8 +310,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuHospedarActionPerformed
 
     private void btGerenciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGerenciamentoActionPerformed
-        GerenciamentoFrame exibir= new GerenciamentoFrame();
-        exibir.setVisible(true);
+        //if(consultas.nivelFuncionario()){
+            GerenciamentoFrame exibir= new GerenciamentoFrame();
+            exibir.setVisible(true);
+        //}
+        /*else{
+            JOptionPane.showMessageDialog(null,"Você não tem permissão para entrar nessa tela!");
+        }*/
     }//GEN-LAST:event_btGerenciamentoActionPerformed
 
     private void menuGerenciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciamentoActionPerformed
@@ -319,6 +339,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
          JOptionPane.showMessageDialog(null,"Projeto de Laboratorio de Programação");
     }//GEN-LAST:event_menuSobreActionPerformed
+
+    private void btAlternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlternarActionPerformed
+        InterfaceLogin alternar=new InterfaceLogin();
+        alternar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btAlternarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,6 +382,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAlternar;
     private javax.swing.JButton btConsulta;
     private javax.swing.JButton btGerenciamento;
     private javax.swing.JButton btNao;
