@@ -14,4 +14,9 @@ public class GerenciamentoController {
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
         gerenciamento.cadastrarQuarto(numero,tipo,status,valorDiario,ar,wifi,frigobar);
     }
+    
+    public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
+            String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
+        gerenciamento.cadastrarFuncionario(nome, cpf, rua, bairro, numero, cidade, estado, dataNascimento, telefone,codFuncionario, usuario, senha, categoria);
+    }
 }

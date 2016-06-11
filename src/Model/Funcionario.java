@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
-import java.sql.ResultSet;
+import java.sql.*;
 import Persistencia.Banco;
 /**
  *
@@ -17,6 +17,9 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     private String categoria;
     ResultSet rst;
     Banco banco=new Banco();
+    String usuario="Batata";
+    String senhaT="Batata";
+    
     /**
      * @return the codFuncionario
      */
@@ -78,56 +81,27 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     }
     
     @Override
-    public boolean logar(String usuarioInserido,String senhaInserida){
-        banco.conectarAoBanco();
-        rst=banco.pesquisarNoBanco("SELECT usuario,senha,categoria FROM funcionario;");
-        String u,s,c;
-        try{
-            while(rst.next()){ 
-                u=rst.getString("usuario");
-                s=rst.getString("senha");
-                c=rst.getString("categoria");
-                if(u.equals(usuarioInserido)&&s.equals(senhaInserida)){
-                    this.setId(u);
-                    this.setSenha(s);
-                    this.setCategoria(c);
-                    banco.desconectarDoBanco();
-                    return true;
-                }
-            } 
-            banco.desconectarDoBanco();
-        }
-        catch(Exception e){
-            System.err.println(e);
-            banco.desconectarDoBanco();
-            return false;
-        }
-        banco.desconectarDoBanco();
-        return false;
+    public boolean logar(String usuarioInserido,String senhaInserida){ 
+        return banco.loginNoBanco(usuarioInserido, senhaInserida);
     }
-    /*public boolean verificarPermissaoGerenciamento(){
-        banco.conectarAoBanco();
-        rst=banco.pesquisarNoBanco("SELECT usuario,senha,categoria FROM funcionario;");
-        try{
-            while(rst.next()){
-                System.out.println(this.getCategoria());
-                if(this.getId().equals(rst.getString("usuario"))&&this.getSenha().equals(rst.getString("senha"))){
-                    if (this.getCategoria().equals("gerente")) {
-                        banco.desconectarDoBanco();
+    public boolean verificarNivel(String usuarioInserido,String senhaInserida){
+        if(banco.loginNoBanco(usuarioInserido, senhaInserida)){
+            rst=banco.pesquisarNoBanco("SELECT categoria FROM funcionario WHERE usuario='"+usuarioInserido+"'AND senha='"+senhaInserida+"'");
+            try{
+                while(rst.next()){
+                    this.setCategoria(rst.getString("categoria"));
+                    if(this.getCategoria().equals("Gerente")){
                         return true;
                     }
                 }
             }
-            banco.desconectarDoBanco();
+            catch(SQLException e){
+                System.err.println(e);
+                return false;
+            }
         }
-        catch(Exception e){
-            System.err.println(e);
-            banco.desconectarDoBanco();
-            return false;
-        }
-        banco.desconectarDoBanco();
-        return false; 
-    }*/
+        return false;
+    }
     public void exibirRelatorios(String tipoRelatorio){       
     }
     
@@ -145,10 +119,59 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         try{
             banco.criarTabelaNoBanco("CREATE TABLE quarto(numero integer unique not null,tipo varchar(15),status varchar(10),valorDiario double,arCondicionado boolean,wifi boolean,frigobar boolean);");
         }
-        catch(Exception e){}
+        catch(Exception e){
+        System.err.println(e);
+        }
         finally{
             banco.inserirNaTabela("INSERT INTO quarto values("+numero+",'"+tipo+"','"+status+"',"+valorDiario+",'"+ar+"','"+wifi+"','"+frigobar+"');");
             banco.desconectarDoBanco();
+        }
+        banco.desconectarDoBanco();
+    }
+    
+    public Quarto exibirQuarto(int numero){
+        Quarto quarto=new Quarto();
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE numero="+numero+";");
+        //System.out.println(numero);
+        try{
+            rst.next();
+            quarto.setNumero(rst.getInt("numero"));
+            quarto.setTipo(rst.getString("tipo"));
+            quarto.setValorDiario(rst.getDouble("valorDiario"));
+            quarto.setStatus(rst.getString("status"));
+            quarto.setAr(rst.getBoolean("arCondicionado"));
+            quarto.setWifi(rst.getBoolean("wifi"));
+            quarto.setFrigobar(rst.getBoolean("frigobar"));
+            banco.desconectarDoBanco();
+            return quarto;
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+        banco.desconectarDoBanco();
+        return null;
+    }
+    
+    public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
+            String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
+        banco.conectarAoBanco();
+        try{
+            banco.inserirNaTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
+                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
+            if(categoria.equals("Gerente")){
+                banco.criarUsuarioNoBanco("GRANT ALL PRIVILIGES ON hotel.* TO '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+            }
+            else{
+                banco.criarUsuarioNoBanco("GRANT SELECT ON hotel.* TO '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+            }
+            banco.desconectarDoBanco();
+        }
+        catch(Exception e){
+        System.err.println(e);
+        }
+        finally{
+            
         }
         banco.desconectarDoBanco();
     }

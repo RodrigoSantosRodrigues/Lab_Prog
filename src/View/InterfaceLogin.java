@@ -12,12 +12,14 @@ package View;
 import com.sun.glass.events.KeyEvent;
 import javax.swing.JOptionPane;
 import Controller.ConsultaController;
+import Persistencia.Banco;
 public class InterfaceLogin extends javax.swing.JFrame {
     ConsultaController consulta=new ConsultaController();
+    Banco banco=new Banco();
     /**
      * Creates new form InterfaceLogin
      */
-    public InterfaceLogin() {
+    public InterfaceLogin(){
         initComponents();
     }
 

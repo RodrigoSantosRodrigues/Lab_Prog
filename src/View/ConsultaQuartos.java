@@ -9,7 +9,11 @@
  * @author Aluno
  */
 package View;
+import Controller.ConsultaController;
+import Model.Quarto;
+import java.awt.Color;
 public class ConsultaQuartos extends javax.swing.JFrame {
+    ConsultaController consulta=new ConsultaController();
     /**
      * Creates new form ConsultaQuartos
      */
@@ -26,6 +30,23 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        frameNumQuarto = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        campoNumQuarto = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        campoCategoria = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        campoStatus = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        campoDiaria = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        btOk = new javax.swing.JButton();
+        campoWf = new javax.swing.JTextField();
+        campoAr = new javax.swing.JTextField();
+        campoFrigobar = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         giratorioNumQuarto = new javax.swing.JSpinner();
         btNumQuarto = new javax.swing.JButton();
@@ -46,20 +67,153 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        frameNumQuarto.setLocation(new java.awt.Point(500, 150));
+        frameNumQuarto.setMinimumSize(new java.awt.Dimension(159, 480));
+        frameNumQuarto.setPreferredSize(new java.awt.Dimension(159, 480));
+        frameNumQuarto.setResizable(false);
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(159, 400));
+
+        jLabel8.setText("Número:");
+
+        campoNumQuarto.setEditable(false);
+
+        jLabel9.setText("Categoria:");
+
+        campoCategoria.setEditable(false);
+
+        jLabel10.setText("Status:");
+
+        campoStatus.setEditable(false);
+
+        jLabel11.setText("Diaria");
+
+        campoDiaria.setEditable(false);
+
+        jLabel12.setText("Wi-Fi:");
+
+        jLabel13.setText("Ar-Condicionado:");
+
+        jLabel14.setText("Frigobar:");
+
+        btOk.setText("OK");
+        btOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btOkActionPerformed(evt);
+            }
+        });
+
+        campoWf.setEditable(false);
+        campoWf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoWfActionPerformed(evt);
+            }
+        });
+
+        campoAr.setEditable(false);
+        campoAr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoArActionPerformed(evt);
+            }
+        });
+
+        campoFrigobar.setEditable(false);
+        campoFrigobar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoFrigobarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(campoNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCategoria)
+                    .addComponent(campoStatus)
+                    .addComponent(campoDiaria)
+                    .addComponent(btOk, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(campoWf)
+                    .addComponent(campoAr)
+                    .addComponent(campoFrigobar))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoDiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addGap(2, 2, 2)
+                .addComponent(campoWf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addGap(3, 3, 3)
+                .addComponent(campoAr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoFrigobar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btOk)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameNumQuartoLayout = new javax.swing.GroupLayout(frameNumQuarto.getContentPane());
+        frameNumQuarto.getContentPane().setLayout(frameNumQuartoLayout);
+        frameNumQuartoLayout.setHorizontalGroup(
+            frameNumQuartoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameNumQuartoLayout.setVerticalGroup(
+            frameNumQuartoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Consultas");
-        setLocation(new java.awt.Point(500, 250));
+        setLocation(new java.awt.Point(500, 100));
         setResizable(false);
 
         btNumQuarto.setText("Consultar");
-        btNumQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btNumQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btNumQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNumQuartoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Número do quarto:");
 
         jLabel3.setText("Categoria do quarto:");
 
         caixaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
-        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel4.setText("Diária:");
 
@@ -70,32 +224,32 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         });
 
         btConsultarTudo.setText("Consultar selecionados");
-        btConsultarTudo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btConsultarTudo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btConsultarTudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConsultarTudoActionPerformed(evt);
             }
         });
 
-        selecaoTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setText("Ar-Condicionado:");
 
-        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel6.setText("Wi-Fi:");
 
-        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoWifi1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoWifi1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel7.setText("Frigobar:");
 
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -214,6 +368,52 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     private void btConsultarTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarTudoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btConsultarTudoActionPerformed
+
+    private void btNumQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNumQuartoActionPerformed
+        Quarto quarto=consulta.consultarQuarto(Integer.parseInt(this.giratorioNumQuarto.getValue().toString()));
+        this.campoNumQuarto.setText(String.valueOf(quarto.getNumero()));
+        this.campoCategoria.setText(quarto.getTipo());
+        this.campoStatus.setText(quarto.getStatus());
+        if(this.campoStatus.getText().equals("Desocupado")){
+            this.campoStatus.setBackground(Color.green);
+        }
+        else{
+            this.campoStatus.setBackground(Color.red);
+        }
+        this.campoDiaria.setText(String.valueOf(quarto.getValorDiario()));
+        if(quarto.getWifi()){
+            this.campoWf.setText("Possui");
+        }else{
+            this.campoWf.setText("Não possui");
+        }
+        if(quarto.getAr()){
+            this.campoAr.setText("Possui");
+        }else{
+            this.campoAr.setText("Não possui");
+        }
+        if(quarto.getFrigobar()){
+            this.campoFrigobar.setText("Possui");
+        }else{
+            this.campoFrigobar.setText("Não possui");
+        }
+        frameNumQuarto.setVisible(true);
+    }//GEN-LAST:event_btNumQuartoActionPerformed
+
+    private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
+        frameNumQuarto.dispose();
+    }//GEN-LAST:event_btOkActionPerformed
+
+    private void campoWfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoWfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoWfActionPerformed
+
+    private void campoArActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoArActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoArActionPerformed
+
+    private void campoFrigobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFrigobarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoFrigobarActionPerformed
     public String getCampoNumQuarto(){
         return this.giratorioNumQuarto.getToolTipText();
     }
@@ -263,18 +463,35 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btConsultarTudo;
     private javax.swing.JButton btNumQuarto;
+    private javax.swing.JButton btOk;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> caixaTipo;
+    private javax.swing.JTextField campoAr;
+    private javax.swing.JTextField campoCategoria;
+    private javax.swing.JTextField campoDiaria;
+    private javax.swing.JTextField campoFrigobar;
+    private javax.swing.JTextField campoNumQuarto;
     private javax.swing.JTextField campoPreco;
+    private javax.swing.JTextField campoStatus;
+    private javax.swing.JTextField campoWf;
+    private javax.swing.JFrame frameNumQuarto;
     private javax.swing.JSpinner giratorioNumQuarto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JCheckBox selecaoAr;
     private javax.swing.JCheckBox selecaoPreco;
     private javax.swing.JCheckBox selecaoTipo;

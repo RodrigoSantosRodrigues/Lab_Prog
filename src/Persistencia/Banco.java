@@ -22,6 +22,18 @@ public class Banco {
         this.setStmt(null);
     }
     
+    public boolean loginNoBanco(String usuario,String senha){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel",usuario,senha));
+            return true;
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+        return false;
+    }
+    
     public boolean conectarAoBanco(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -57,6 +69,16 @@ public class Banco {
         }
     }
     public void criarTabelaNoBanco(String queryCriar){
+        try{
+            this.setStmt(this.getConnection().createStatement());
+            stmt.execute(queryCriar);
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }
+    
+    public void criarUsuarioNoBanco(String queryCriar){
         try{
             this.setStmt(this.getConnection().createStatement());
             stmt.execute(queryCriar);
