@@ -163,15 +163,16 @@ public class Quarto {
         rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+"AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
                 +"AND wifi="+Boolean.parseBoolean(selecionados[3])+"AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");
         try{
-            System.out.println(rst.getString("status"));
             while(rst.next()){
                cont++; 
+               System.out.println(cont);
             }
-            System.out.println(cont);
             num=new int[cont];
             cont=0;
             rst.first();
+            rst.
             while(rst.next()){
+               System.out.println(rst.getInt("numero"));
                num[cont]=rst.getInt("numero");
                cont++;
             }
@@ -179,8 +180,7 @@ public class Quarto {
         }
         catch(SQLException e){
             System.err.println(e);
-        }
-        
+        }  
         return null;
     }
     

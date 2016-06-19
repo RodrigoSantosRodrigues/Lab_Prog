@@ -405,6 +405,31 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPrecoActionPerformed
 
     private void btConsultarTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarTudoActionPerformed
+        String selecionados[]=new String[5];
+        selecionados[0]=String.valueOf(this.caixaTipo.getSelectedItem());
+        selecionados[1]=this.campoPreco.getText();
+        if(this.selecaoAr.isSelected()){
+            selecionados[2]="true";
+        }
+        else{
+            selecionados[2]="false";
+        }
+        if(this.selecaoWifi.isSelected()){
+            selecionados[3]="true";
+        }
+        else{
+            selecionados[3]="false";
+        }
+        if(this.selecaoFrigobar.isSelected()){
+            selecionados[4]="true";
+        }
+        else{
+            selecionados[4]="false";
+        }
+        int num[]=consulta.consultarSelecionados(selecionados);
+        for(int i=0;i<num.length;i++){
+            comboSelecionados.addItem(String.valueOf(num[i]));
+        }
         this.frameSelecionados.setVisible(true);
     }//GEN-LAST:event_btConsultarTudoActionPerformed
 
@@ -440,31 +465,6 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }//GEN-LAST:event_btNumQuartoActionPerformed
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
-        String selecionados[]=new String[5];
-        selecionados[0]=String.valueOf(this.caixaTipo.getSelectedItem());
-        selecionados[1]=this.campoPreco.getText();
-        if(this.selecaoAr.isSelected()){
-            selecionados[2]="true";
-        }
-        else{
-            selecionados[2]="false";
-        }
-        if(this.selecaoWifi.isSelected()){
-            selecionados[3]="true";
-        }
-        else{
-            selecionados[3]="false";
-        }
-        if(this.selecaoFrigobar.isSelected()){
-            selecionados[4]="true";
-        }
-        else{
-            selecionados[4]="false";
-        }
-        int num[]=consulta.consultarSelecionados(selecionados);
-        for(int i=0;i<num.length;i++){
-            comboSelecionados.addItem(String.valueOf(num[i]));
-        }
         frameNumQuarto.dispose();
     }//GEN-LAST:event_btOkActionPerformed
 
