@@ -37,7 +37,7 @@ public class Banco {
     public boolean conectarAoBanco(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","root","root"));
+            this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","Pedro","123"));
             return true;
         }
         catch(Exception e){
@@ -56,7 +56,7 @@ public class Banco {
         }
     }
     
-    public boolean inserirNaTabela(String queryInsercao){
+    public boolean modificarTabela(String queryInsercao){
         try{
             this.setStmt(this.getConnection().createStatement());
             this.setQuery(queryInsercao);

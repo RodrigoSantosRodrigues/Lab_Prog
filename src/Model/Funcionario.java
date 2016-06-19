@@ -17,6 +17,7 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     private String categoria;
     ResultSet rst;
     Banco banco=new Banco();
+    Quarto quarto=new Quarto();
     String usuario="Batata";
     String senhaT="Batata";
     
@@ -82,32 +83,44 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     
     @Override
     public boolean logar(String usuarioInserido,String senhaInserida){ 
-        return banco.loginNoBanco(usuarioInserido, senhaInserida);
+        boolean retorno =banco.loginNoBanco(usuarioInserido, senhaInserida);
+        if(retorno){
+            banco.conectarAoBanco();
+            banco.modificarTabela("INSERT INTO funcionarioatual values('"+usuarioInserido+"','"+senhaInserida+"');");
+            banco.desconectarDoBanco();
+        }
+        banco.desconectarDoBanco();
+        return retorno;
     }
-    public boolean verificarNivel(String usuarioInserido,String senhaInserida){
-        if(banco.loginNoBanco(usuarioInserido, senhaInserida)){
-            rst=banco.pesquisarNoBanco("SELECT categoria FROM funcionario WHERE usuario='"+usuarioInserido+"'AND senha='"+senhaInserida+"'");
+    public boolean verificarNivel(){
+        if(banco.conectarAoBanco()){
+            rst=banco.pesquisarNoBanco("SELECT f.categoria FROM funcionario as f,funcionarioatual as a WHERE a.usuario=f.usuario and a.senha=f.senha;");
             try{
                 while(rst.next()){
                     this.setCategoria(rst.getString("categoria"));
                     if(this.getCategoria().equals("Gerente")){
+                        banco.desconectarDoBanco();
                         return true;
                     }
                 }
             }
             catch(SQLException e){
                 System.err.println(e);
+                banco.desconectarDoBanco();
                 return false;
             }
         }
+        banco.desconectarDoBanco();
         return false;
     }
-    public void exibirRelatorios(String tipoRelatorio){       
+    
+    public void limparUsuarioAtual(){
+        banco.conectarAoBanco();
+        banco.modificarTabela("DELETE FROM funcionarioatual;");
+        banco.desconectarDoBanco();
     }
     
-    public Funcionario cadastrarFunc(String nome,String cpf,String rua,String bairro,int numero,String cidade,String estado,String dataNascimento,String telefone,
-            int codFuncionario,String id,String senha,String categoria){
-        return null;
+    public void exibirRelatorios(String tipoRelatorio){       
     }
     
     /*public Quarto consultarQuarto(int numQuarto){
@@ -115,56 +128,33 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     }*/
     
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
-        banco.conectarAoBanco();
-        try{
-            banco.criarTabelaNoBanco("CREATE TABLE quarto(numero integer unique not null,tipo varchar(15),status varchar(10),valorDiario double,arCondicionado boolean,wifi boolean,frigobar boolean);");
-        }
-        catch(Exception e){
-        System.err.println(e);
-        }
-        finally{
-            banco.inserirNaTabela("INSERT INTO quarto values("+numero+",'"+tipo+"','"+status+"',"+valorDiario+",'"+ar+"','"+wifi+"','"+frigobar+"');");
-            banco.desconectarDoBanco();
-        }
-        banco.desconectarDoBanco();
+        quarto.cadastrarQuarto(numero, tipo, status, valorDiario, ar, wifi, frigobar);
     }
     
-    public Quarto exibirQuarto(int numero){
-        Quarto quarto=new Quarto();
-        banco.conectarAoBanco();
-        rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE numero="+numero+";");
-        //System.out.println(numero);
-        try{
-            rst.next();
-            quarto.setNumero(rst.getInt("numero"));
-            quarto.setTipo(rst.getString("tipo"));
-            quarto.setValorDiario(rst.getDouble("valorDiario"));
-            quarto.setStatus(rst.getString("status"));
-            quarto.setAr(rst.getBoolean("arCondicionado"));
-            quarto.setWifi(rst.getBoolean("wifi"));
-            quarto.setFrigobar(rst.getBoolean("frigobar"));
-            banco.desconectarDoBanco();
-            return quarto;
-        }
-        catch(SQLException e){
-            System.err.println(e);
-        }
-        banco.desconectarDoBanco();
-        return null;
+    public String[] exibirQuarto(int numero){
+        return quarto.exibirQuarto(numero);
+    }
+    
+    public int[] exibirSelecionados(String selecionados[]){
+        return quarto.exibirSelecionados(selecionados);
     }
     
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
-            String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
+        String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
         banco.conectarAoBanco();
         try{
-            banco.inserirNaTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
-                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
             if(categoria.equals("Gerente")){
-                banco.criarUsuarioNoBanco("GRANT ALL PRIVILIGES ON hotel.* TO '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.criarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
+                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
             else{
-                banco.criarUsuarioNoBanco("GRANT SELECT ON hotel.* TO '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.criarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
+                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
+           
+            
             banco.desconectarDoBanco();
         }
         catch(Exception e){

@@ -24,11 +24,19 @@ public class ConsultaController {
         return funcionario.logar(usuario, senha);
     }
     
-    public boolean consultarNivel(String usuario,String senha){
-        return funcionario.verificarNivel(usuario, senha);
+    public boolean consultarNivel(){
+        return funcionario.verificarNivel();
     }
     
-    public Quarto consultarQuarto(int numero){
+    public String[] consultarQuarto(int numero){
         return funcionario.exibirQuarto(numero);
+    }
+    
+    public int[] consultarSelecionados(String selecionados[]){
+        return funcionario.exibirSelecionados(selecionados);
+    }
+    
+    public void limparUsuarioAtual(){
+        funcionario.limparUsuarioAtual();
     }
 }

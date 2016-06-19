@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Model;
-
+import Persistencia.Banco;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author Sandra
@@ -15,6 +17,8 @@ public class Quarto {
     private String status;
     private double valorDiario;
     private boolean wifi,ar,frigobar;
+    Banco banco=new Banco();
+    ResultSet rst;
 
     /**
      * @return the wifi
@@ -112,6 +116,72 @@ public class Quarto {
      */
     public void setValorDiario(double valorDiario) {
         this.valorDiario = valorDiario;
+    }
+    
+    public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
+        banco.conectarAoBanco();
+        try{
+            banco.criarTabelaNoBanco("CREATE TABLE quarto(numero integer unique not null,tipo varchar(15),status varchar(10),valorDiario double,arCondicionado boolean,wifi boolean,frigobar boolean);");
+        }
+        catch(Exception e){
+        System.err.println(e);
+        }
+        finally{
+            banco.modificarTabela("INSERT INTO quarto values("+numero+",'"+tipo+"','"+status+"',"+valorDiario+",'"+ar+"','"+wifi+"','"+frigobar+"');");
+            banco.desconectarDoBanco();
+        }
+        banco.desconectarDoBanco();
+    }
+    
+    public String[] exibirQuarto(int numero){
+        String vetor[]=new String[7];
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE numero="+numero+";");
+        try{
+            rst.next();
+            vetor[0]=(String.valueOf(rst.getInt("numero")));
+            vetor[1]=(rst.getString("tipo"));
+            vetor[2]=(String.valueOf(rst.getDouble("valorDiario")));
+            vetor[3]=(rst.getString("status"));
+            vetor[4]=(String.valueOf(rst.getBoolean("arCondicionado")));
+            vetor[5]=(String.valueOf(rst.getBoolean("wifi")));
+            vetor[6]=(String.valueOf(rst.getBoolean("frigobar")));
+            banco.desconectarDoBanco();
+            return vetor;
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+        banco.desconectarDoBanco();
+        return null;
+    }
+    
+    public int[] exibirSelecionados(String selecionados[]){
+        int num[];
+        int cont=0;
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+"AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
+                +"AND wifi="+Boolean.parseBoolean(selecionados[3])+"AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");
+        try{
+            System.out.println(rst.getString("status"));
+            while(rst.next()){
+               cont++; 
+            }
+            System.out.println(cont);
+            num=new int[cont];
+            cont=0;
+            rst.first();
+            while(rst.next()){
+               num[cont]=rst.getInt("numero");
+               cont++;
+            }
+            return num;
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+        
+        return null;
     }
     
 }

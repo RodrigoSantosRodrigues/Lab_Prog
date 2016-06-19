@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import Controller.ConsultaController;
 public class InterfacePrincipal extends javax.swing.JFrame {
     ConsultaController consultas=new ConsultaController();
+    GerenciamentoFrame gerenciamento=new GerenciamentoFrame();
     /**
      * Creates new form InterfacePrincipal
      */
@@ -36,15 +37,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         painelSair = new javax.swing.JPanel();
         btSim = new javax.swing.JButton();
         btNao = new javax.swing.JButton();
-        frameNivel = new javax.swing.JFrame();
-        painelFundo = new javax.swing.JPanel();
-        btSair1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        campoUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        campoSenha = new javax.swing.JPasswordField();
-        btAbrirGerenciamento = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         painelPrincipal = new javax.swing.JPanel();
         btConsulta = new javax.swing.JButton();
         btReserva = new javax.swing.JButton();
@@ -117,96 +109,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         msgSairLayout.setVerticalGroup(
             msgSairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        frameNivel.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        frameNivel.setTitle("Nivel");
-        frameNivel.setLocation(new java.awt.Point(500, 250));
-        frameNivel.setMinimumSize(new java.awt.Dimension(362, 360));
-        frameNivel.setPreferredSize(new java.awt.Dimension(362, 360));
-        frameNivel.setResizable(false);
-
-        painelFundo.setMinimumSize(new java.awt.Dimension(362, 360));
-        painelFundo.setPreferredSize(new java.awt.Dimension(362, 360));
-
-        btSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
-        btSair1.setText("Sair");
-        btSair1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSair1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Nome de usuário:");
-
-        jLabel3.setText("Senha:");
-
-        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                campoSenhaKeyPressed(evt);
-            }
-        });
-
-        btAbrirGerenciamento.setText("Acessar Gerenciamento");
-        btAbrirGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btAbrirGerenciamento.setPreferredSize(new java.awt.Dimension(87, 41));
-        btAbrirGerenciamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAbrirGerenciamentoActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/login.png"))); // NOI18N
-
-        javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
-        painelFundo.setLayout(painelFundoLayout);
-        painelFundoLayout.setHorizontalGroup(
-            painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(painelFundoLayout.createSequentialGroup()
-                            .addComponent(btAbrirGerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                            .addComponent(btSair1))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        painelFundoLayout.setVerticalGroup(
-            painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSair1)
-                    .addComponent(btAbrirGerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout frameNivelLayout = new javax.swing.GroupLayout(frameNivel.getContentPane());
-        frameNivel.getContentPane().setLayout(frameNivelLayout);
-        frameNivelLayout.setHorizontalGroup(
-            frameNivelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        frameNivelLayout.setVerticalGroup(
-            frameNivelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -410,7 +312,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuHospedarActionPerformed
     
     private void btGerenciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGerenciamentoActionPerformed
-        frameNivel.setVisible(true);
+        if(consultas.consultarNivel()){
+            gerenciamento.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Você não tem permissão para entrar nessa área!");
+        }
     }//GEN-LAST:event_btGerenciamentoActionPerformed
 
     private void menuGerenciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciamentoActionPerformed
@@ -418,6 +325,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuGerenciamentoActionPerformed
 
     private void btSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSimActionPerformed
+        consultas.limparUsuarioAtual();
         msgSair.dispose();
         this.dispose();
     }//GEN-LAST:event_btSimActionPerformed
@@ -435,32 +343,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void btAlternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlternarActionPerformed
+        consultas.limparUsuarioAtual();
         InterfaceLogin alternar=new InterfaceLogin();
         alternar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btAlternarActionPerformed
-
-    private void btSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSair1ActionPerformed
-        frameNivel.dispose();
-    }//GEN-LAST:event_btSair1ActionPerformed
-
-    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
-
-    }//GEN-LAST:event_campoSenhaKeyPressed
-
-    private void btAbrirGerenciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAbrirGerenciamentoActionPerformed
-        String password=String.valueOf(campoSenha.getPassword());
-        if(consultas.consultarNivel(this.campoUsuario.getText(), password)){
-            GerenciamentoFrame abrir=new GerenciamentoFrame();
-            abrir.setVisible(true);
-            this.campoUsuario.setText("");
-            this.campoSenha.setText("");
-            frameNivel.dispose();
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Você não tem permissão para entrar nessa área!");
-        }
-    }//GEN-LAST:event_btAbrirGerenciamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,22 +385,14 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAbrirGerenciamento;
     private javax.swing.JButton btAlternar;
     private javax.swing.JButton btConsulta;
     private javax.swing.JButton btGerenciamento;
     private javax.swing.JButton btNao;
     private javax.swing.JButton btReserva;
     private javax.swing.JButton btSair;
-    private javax.swing.JButton btSair1;
     private javax.swing.JButton btSim;
-    private javax.swing.JPasswordField campoSenha;
-    private javax.swing.JTextField campoUsuario;
-    private javax.swing.JFrame frameNivel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JMenu menuAjuda;
@@ -525,7 +404,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JMenuItem menuSobre;
     private javax.swing.JDialog msgSair;
-    private javax.swing.JPanel painelFundo;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JPanel painelSair;
     // End of variables declaration//GEN-END:variables

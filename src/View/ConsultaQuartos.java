@@ -47,6 +47,10 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         campoWf = new javax.swing.JTextField();
         campoAr = new javax.swing.JTextField();
         campoFrigobar = new javax.swing.JTextField();
+        frameSelecionados = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        comboSelecionados = new javax.swing.JComboBox<>();
+        btVoltar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         giratorioNumQuarto = new javax.swing.JSpinner();
         btNumQuarto = new javax.swing.JButton();
@@ -56,20 +60,17 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         campoPreco = new javax.swing.JTextField();
         btConsultarTudo = new javax.swing.JButton();
-        selecaoTipo = new javax.swing.JCheckBox();
-        selecaoPreco = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         selecaoAr = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         selecaoWifi = new javax.swing.JCheckBox();
-        selecaoWifi1 = new javax.swing.JCheckBox();
+        selecaoFrigobar = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         btSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         frameNumQuarto.setLocation(new java.awt.Point(500, 150));
         frameNumQuarto.setMinimumSize(new java.awt.Dimension(159, 480));
-        frameNumQuarto.setPreferredSize(new java.awt.Dimension(159, 480));
         frameNumQuarto.setResizable(false);
 
         jPanel2.setMinimumSize(new java.awt.Dimension(159, 400));
@@ -195,6 +196,53 @@ public class ConsultaQuartos extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
         );
 
+        frameSelecionados.setLocation(new java.awt.Point(250, 150));
+        frameSelecionados.setMinimumSize(new java.awt.Dimension(150, 170));
+        frameSelecionados.setName("Quartos disponíveis"); // NOI18N
+        frameSelecionados.setPreferredSize(new java.awt.Dimension(150, 170));
+        frameSelecionados.setResizable(false);
+
+        jPanel3.setMinimumSize(new java.awt.Dimension(120, 121));
+
+        btVoltar.setText("Voltar");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboSelecionados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btVoltar)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameSelecionadosLayout = new javax.swing.GroupLayout(frameSelecionados.getContentPane());
+        frameSelecionados.getContentPane().setLayout(frameSelecionadosLayout);
+        frameSelecionadosLayout.setHorizontalGroup(
+            frameSelecionadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameSelecionadosLayout.setVerticalGroup(
+            frameSelecionadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Consultas");
         setLocation(new java.awt.Point(500, 100));
@@ -231,10 +279,6 @@ public class ConsultaQuartos extends javax.swing.JFrame {
             }
         });
 
-        selecaoTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        selecaoPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
         jLabel5.setText("Ar-Condicionado:");
 
         selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -243,7 +287,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
 
         selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoWifi1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel7.setText("Frigobar:");
 
@@ -292,10 +336,8 @@ public class ConsultaQuartos extends javax.swing.JFrame {
                                         .addComponent(caixaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(selecaoWifi1)
+                                        .addComponent(selecaoFrigobar)
                                         .addComponent(selecaoAr)
-                                        .addComponent(selecaoPreco)
-                                        .addComponent(selecaoTipo)
                                         .addComponent(selecaoWifi)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -312,16 +354,12 @@ public class ConsultaQuartos extends javax.swing.JFrame {
                 .addComponent(btNumQuarto)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(caixaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selecaoTipo))
+                .addGap(11, 11, 11)
+                .addComponent(caixaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(campoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selecaoPreco))
+                .addGap(6, 6, 6)
+                .addComponent(campoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -335,7 +373,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(selecaoWifi1))
+                    .addComponent(selecaoFrigobar))
                 .addGap(18, 18, 18)
                 .addComponent(btConsultarTudo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -358,6 +396,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.frameSelecionados.dispose();
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -366,32 +405,33 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPrecoActionPerformed
 
     private void btConsultarTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarTudoActionPerformed
-        this.dispose();
+        this.frameSelecionados.setVisible(true);
     }//GEN-LAST:event_btConsultarTudoActionPerformed
 
     private void btNumQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNumQuartoActionPerformed
-        Quarto quarto=consulta.consultarQuarto(Integer.parseInt(this.giratorioNumQuarto.getValue().toString()));
-        this.campoNumQuarto.setText(String.valueOf(quarto.getNumero()));
-        this.campoCategoria.setText(quarto.getTipo());
-        this.campoStatus.setText(quarto.getStatus());
+        String vetor[]=consulta.consultarQuarto(Integer.parseInt(this.giratorioNumQuarto.getValue().toString()));
+        this.campoNumQuarto.setText(vetor[0]);
+        this.campoCategoria.setText(vetor[1]);
+        this.campoDiaria.setText(vetor[2]);
+        this.campoStatus.setText(vetor[3]);
         if(this.campoStatus.getText().equals("Desocupado")){
             this.campoStatus.setBackground(Color.green);
         }
         else{
             this.campoStatus.setBackground(Color.red);
         }
-        this.campoDiaria.setText(String.valueOf(quarto.getValorDiario()));
-        if(quarto.getWifi()){
-            this.campoWf.setText("Possui");
-        }else{
-            this.campoWf.setText("Não possui");
-        }
-        if(quarto.getAr()){
+        if(vetor[4].equals("true")){
             this.campoAr.setText("Possui");
         }else{
             this.campoAr.setText("Não possui");
         }
-        if(quarto.getFrigobar()){
+        if(vetor[5].equals("true")){
+            this.campoWf.setText("Possui");
+        }else{
+            this.campoWf.setText("Não possui");
+        }
+        
+        if(vetor[6].equals("True")){
             this.campoFrigobar.setText("Possui");
         }else{
             this.campoFrigobar.setText("Não possui");
@@ -400,6 +440,31 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }//GEN-LAST:event_btNumQuartoActionPerformed
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
+        String selecionados[]=new String[5];
+        selecionados[0]=String.valueOf(this.caixaTipo.getSelectedItem());
+        selecionados[1]=this.campoPreco.getText();
+        if(this.selecaoAr.isSelected()){
+            selecionados[2]="true";
+        }
+        else{
+            selecionados[2]="false";
+        }
+        if(this.selecaoWifi.isSelected()){
+            selecionados[3]="true";
+        }
+        else{
+            selecionados[3]="false";
+        }
+        if(this.selecaoFrigobar.isSelected()){
+            selecionados[4]="true";
+        }
+        else{
+            selecionados[4]="false";
+        }
+        int num[]=consulta.consultarSelecionados(selecionados);
+        for(int i=0;i<num.length;i++){
+            comboSelecionados.addItem(String.valueOf(num[i]));
+        }
         frameNumQuarto.dispose();
     }//GEN-LAST:event_btOkActionPerformed
 
@@ -414,6 +479,10 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     private void campoFrigobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFrigobarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoFrigobarActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+            this.frameSelecionados.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
     public String getCampoNumQuarto(){
         return this.giratorioNumQuarto.getToolTipText();
     }
@@ -465,6 +534,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     private javax.swing.JButton btNumQuarto;
     private javax.swing.JButton btOk;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JComboBox<String> caixaTipo;
     private javax.swing.JTextField campoAr;
     private javax.swing.JTextField campoCategoria;
@@ -474,7 +544,9 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     private javax.swing.JTextField campoPreco;
     private javax.swing.JTextField campoStatus;
     private javax.swing.JTextField campoWf;
+    private javax.swing.JComboBox<String> comboSelecionados;
     private javax.swing.JFrame frameNumQuarto;
+    private javax.swing.JFrame frameSelecionados;
     private javax.swing.JSpinner giratorioNumQuarto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -492,10 +564,9 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JCheckBox selecaoAr;
-    private javax.swing.JCheckBox selecaoPreco;
-    private javax.swing.JCheckBox selecaoTipo;
+    private javax.swing.JCheckBox selecaoFrigobar;
     private javax.swing.JCheckBox selecaoWifi;
-    private javax.swing.JCheckBox selecaoWifi1;
     // End of variables declaration//GEN-END:variables
 }
