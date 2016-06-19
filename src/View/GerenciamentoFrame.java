@@ -58,13 +58,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btSairCadastro = new javax.swing.JButton();
         btCadastrar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        comboCategoria = new javax.swing.JComboBox<>();
+        comboCategoria = new javax.swing.JComboBox<String>();
         frameCadastroQuarto = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         giratorioNumQuarto = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         campoPreco = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -76,6 +76,8 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btCadastrarQuarto = new javax.swing.JButton();
         btSairQuarto = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
+        frameExcluirFuncionario = new javax.swing.JFrame();
+        btCodigo = new javax.swing.JComboBox();
         painelFundo = new javax.swing.JPanel();
         btSair = new javax.swing.JButton();
         btEmitir = new javax.swing.JButton();
@@ -83,6 +85,9 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btCadastroFunc = new javax.swing.JButton();
         btCadastroQuartos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btExcluirrFuncionario = new javax.swing.JButton();
+        btExcluirQuarto = new javax.swing.JButton();
+        btListarFuncionario = new javax.swing.JButton();
 
         frameCadastroFunc.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameCadastroFunc.setTitle("Cadastro de funcionários");
@@ -117,7 +122,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         jLabel15.setText("Senha:");
 
         btLimpar.setText("Limpar");
-        btLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -126,7 +131,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         btSairCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSairCadastro.setText("Sair");
-        btSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSairCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairCadastroActionPerformed(evt);
@@ -134,7 +139,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         });
 
         btCadastrar.setText("Cadastrar");
-        btCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -143,8 +148,8 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel21.setText("Categoria:");
 
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Gerente" }));
-        comboCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Gerente" }));
+        comboCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -294,7 +299,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel17.setText("Categoria do quarto:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel8.setText("Diária:");
@@ -305,14 +310,14 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel19.setText("Frigobar:");
 
-        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btCadastrarQuarto.setText("Cadastrar");
-        btCadastrarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastrarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastrarQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarQuartoActionPerformed(evt);
@@ -321,7 +326,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         btSairQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSairQuarto.setText("Sair");
-        btSairQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSairQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSairQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairQuartoActionPerformed(evt);
@@ -414,6 +419,23 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout frameExcluirFuncionarioLayout = new javax.swing.GroupLayout(frameExcluirFuncionario.getContentPane());
+        frameExcluirFuncionario.getContentPane().setLayout(frameExcluirFuncionarioLayout);
+        frameExcluirFuncionarioLayout.setHorizontalGroup(
+            frameExcluirFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameExcluirFuncionarioLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(btCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+        frameExcluirFuncionarioLayout.setVerticalGroup(
+            frameExcluirFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirFuncionarioLayout.createSequentialGroup()
+                .addContainerGap(133, Short.MAX_VALUE)
+                .addComponent(btCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gerenciamento");
         setLocation(new java.awt.Point(500, 250));
@@ -421,7 +443,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -429,16 +451,16 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         });
 
         btEmitir.setText("Emitir relatórios");
-        btEmitir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEmitir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btExibirRelatorios.setText("Exibir relatórios");
-        btExibirRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btExibirRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btExibirRelatorios.setMaximumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setMinimumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setPreferredSize(new java.awt.Dimension(113, 23));
 
         btCadastroFunc.setText("Cadastrar funcionário");
-        btCadastroFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastroFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastroFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroFuncActionPerformed(evt);
@@ -446,7 +468,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         });
 
         btCadastroQuartos.setText("Cadastrar quarto");
-        btCadastroQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCadastroQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCadastroQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroQuartosActionPerformed(evt);
@@ -455,6 +477,17 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconmonstr-gear-10-icon-256.png"))); // NOI18N
 
+        btExcluirrFuncionario.setText("Excluir funcionário");
+        btExcluirrFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirrFuncionarioActionPerformed(evt);
+            }
+        });
+
+        btExcluirQuarto.setText("Excluir quarto");
+
+        btListarFuncionario.setText("Listar funcionários");
+
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
         painelFundoLayout.setHorizontalGroup(
@@ -462,18 +495,25 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             .addGroup(painelFundoLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCadastroFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btExibirRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btExcluirrFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(btExcluirQuarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btListarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btCadastroFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btExibirRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                        .addComponent(btSair)
-                        .addContainerGap())))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(181, 181, 181))
+                            .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(10, 10, 10))))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,11 +523,17 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addComponent(btExibirRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(btEmitir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btListarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
-                .addComponent(btCadastroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCadastroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExcluirrFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(btCadastroQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCadastroQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExcluirQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(btSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -575,6 +621,10 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameCadastroFunc.dispose();
     }//GEN-LAST:event_btSairCadastroActionPerformed
 
+    private void btExcluirrFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirrFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btExcluirrFuncionarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -616,9 +666,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btCadastrarQuarto;
     private javax.swing.JButton btCadastroFunc;
     private javax.swing.JButton btCadastroQuartos;
+    private javax.swing.JComboBox btCodigo;
     private javax.swing.JButton btEmitir;
+    private javax.swing.JButton btExcluirQuarto;
+    private javax.swing.JButton btExcluirrFuncionario;
     private javax.swing.JButton btExibirRelatorios;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btListarFuncionario;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSairCadastro;
     private javax.swing.JButton btSairQuarto;
@@ -638,6 +692,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JFrame frameCadastroFunc;
     private javax.swing.JFrame frameCadastroQuarto;
+    private javax.swing.JFrame frameExcluirFuncionario;
     private javax.swing.JSpinner giratorioNumQuarto;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
