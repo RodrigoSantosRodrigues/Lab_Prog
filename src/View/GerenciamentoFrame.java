@@ -9,9 +9,11 @@
  * @author Aluno
  */
 package View;
-import Controller.GerenciamentoController;
+import Controller.*;
+import javax.swing.table.DefaultTableModel;
 public class GerenciamentoFrame extends javax.swing.JFrame{
     GerenciamentoController gerenciamento=new GerenciamentoController();
+    ConsultaController consulta=new ConsultaController();
     /**
      * Creates new form GerenciamentoFrame
      */
@@ -58,13 +60,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btSairCadastro = new javax.swing.JButton();
         btCadastrar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        comboCategoria = new javax.swing.JComboBox<String>();
+        comboCategoria = new javax.swing.JComboBox<>();
         frameCadastroQuarto = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         giratorioNumQuarto = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         campoPreco = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -76,8 +78,45 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btCadastrarQuarto = new javax.swing.JButton();
         btSairQuarto = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
+        frameListarQuartos = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        btVoltar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbListarQuartos = new javax.swing.JTable();
+        frameExcluirQuarto = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        campoNumExcluir = new javax.swing.JTextField();
+        btExcluir = new javax.swing.JButton();
+        btCancelarQuarto = new javax.swing.JButton();
+        frameCheckOut = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        campoCheckOut = new javax.swing.JTextField();
+        btConfirmaCheck = new javax.swing.JButton();
+        btCancelarCheck = new javax.swing.JButton();
+        frameListarFuncionarios = new javax.swing.JFrame();
+        jPanel6 = new javax.swing.JPanel();
+        btVoltarFunc = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbListarFuncionarios = new javax.swing.JTable();
         frameExcluirFuncionario = new javax.swing.JFrame();
-        btCodigo = new javax.swing.JComboBox();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        campoNumExcluirFunc = new javax.swing.JTextField();
+        btExcluirFunc = new javax.swing.JButton();
+        btCancelarFunc = new javax.swing.JButton();
+        frameListarClientes = new javax.swing.JFrame();
+        jPanel8 = new javax.swing.JPanel();
+        btVoltarCliente = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbListarCliente = new javax.swing.JTable();
+        frameExcluirCliente = new javax.swing.JFrame();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        campoNumExcluirCliente = new javax.swing.JTextField();
+        btExcluirCli = new javax.swing.JButton();
+        btCancelarCliente = new javax.swing.JButton();
         painelFundo = new javax.swing.JPanel();
         btSair = new javax.swing.JButton();
         btEmitir = new javax.swing.JButton();
@@ -85,9 +124,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         btCadastroFunc = new javax.swing.JButton();
         btCadastroQuartos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btExcluirrFuncionario = new javax.swing.JButton();
+        btExcluirFuncionario = new javax.swing.JButton();
         btExcluirQuarto = new javax.swing.JButton();
+        btListarQuartos = new javax.swing.JButton();
+        btCheckOut = new javax.swing.JButton();
         btListarFuncionario = new javax.swing.JButton();
+        btListarClientes = new javax.swing.JButton();
+        btExcluirCliente = new javax.swing.JButton();
 
         frameCadastroFunc.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameCadastroFunc.setTitle("Cadastro de funcionários");
@@ -148,7 +191,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel21.setText("Categoria:");
 
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Gerente" }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Gerente" }));
         comboCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -299,7 +342,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel17.setText("Categoria do quarto:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel8.setText("Diária:");
@@ -419,21 +462,448 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                 .addContainerGap())
         );
 
+        frameListarQuartos.setLocation(new java.awt.Point(500, 150));
+        frameListarQuartos.setMinimumSize(new java.awt.Dimension(714, 315));
+
+        btVoltar.setText("Voltar");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
+        tbListarQuartos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Número do quarto", "Categoria", "Status", "Diária", "Ar-Condicionado", "Wi-fi", "Frigobar"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbListarQuartos);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btVoltar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltar)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout frameListarQuartosLayout = new javax.swing.GroupLayout(frameListarQuartos.getContentPane());
+        frameListarQuartos.getContentPane().setLayout(frameListarQuartosLayout);
+        frameListarQuartosLayout.setHorizontalGroup(
+            frameListarQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameListarQuartosLayout.setVerticalGroup(
+            frameListarQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        frameExcluirQuarto.setLocation(new java.awt.Point(500, 150));
+        frameExcluirQuarto.setMinimumSize(new java.awt.Dimension(190, 140));
+        frameExcluirQuarto.setPreferredSize(new java.awt.Dimension(190, 140));
+
+        jLabel22.setText("Número do quarto:");
+
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
+
+        btCancelarQuarto.setText("Cancelar");
+        btCancelarQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarQuartoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(campoNumExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCancelarQuarto)))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNumExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExcluir)
+                    .addComponent(btCancelarQuarto))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameExcluirQuartoLayout = new javax.swing.GroupLayout(frameExcluirQuarto.getContentPane());
+        frameExcluirQuarto.getContentPane().setLayout(frameExcluirQuartoLayout);
+        frameExcluirQuartoLayout.setHorizontalGroup(
+            frameExcluirQuartoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameExcluirQuartoLayout.setVerticalGroup(
+            frameExcluirQuartoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        frameCheckOut.setLocation(new java.awt.Point(500, 150));
+        frameCheckOut.setMinimumSize(new java.awt.Dimension(287, 145));
+        frameCheckOut.setPreferredSize(new java.awt.Dimension(287, 145));
+
+        jLabel23.setText("Número do quarto:");
+
+        btConfirmaCheck.setText("Confirmar check-out");
+        btConfirmaCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmaCheckActionPerformed(evt);
+            }
+        });
+
+        btCancelarCheck.setText("Cancelar");
+        btCancelarCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarCheckActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btConfirmaCheck)
+                        .addGap(18, 18, 18)
+                        .addComponent(btCancelarCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btConfirmaCheck)
+                    .addComponent(btCancelarCheck))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameCheckOutLayout = new javax.swing.GroupLayout(frameCheckOut.getContentPane());
+        frameCheckOut.getContentPane().setLayout(frameCheckOutLayout);
+        frameCheckOutLayout.setHorizontalGroup(
+            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        frameCheckOutLayout.setVerticalGroup(
+            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        frameListarFuncionarios.setLocation(new java.awt.Point(500, 150));
+        frameListarFuncionarios.setMinimumSize(new java.awt.Dimension(714, 315));
+
+        btVoltarFunc.setText("Voltar");
+        btVoltarFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarFuncActionPerformed(evt);
+            }
+        });
+
+        tbListarFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "CPF", "Rua", "Número", "Bairro", "Cidade", "Estado", "Data de nascimento", "Telefone", "Usuário", "Senha", "Nível", "Código"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tbListarFuncionarios);
+        if (tbListarFuncionarios.getColumnModel().getColumnCount() > 0) {
+            tbListarFuncionarios.getColumnModel().getColumn(12).setHeaderValue("Código");
+        }
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btVoltarFunc))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltarFunc)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout frameListarFuncionariosLayout = new javax.swing.GroupLayout(frameListarFuncionarios.getContentPane());
+        frameListarFuncionarios.getContentPane().setLayout(frameListarFuncionariosLayout);
+        frameListarFuncionariosLayout.setHorizontalGroup(
+            frameListarFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameListarFuncionariosLayout.setVerticalGroup(
+            frameListarFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        frameExcluirFuncionario.setLocation(new java.awt.Point(500, 150));
+        frameExcluirFuncionario.setMinimumSize(new java.awt.Dimension(190, 140));
+        frameExcluirFuncionario.setPreferredSize(new java.awt.Dimension(190, 140));
+
+        jLabel24.setText("Código do funcionário:");
+
+        btExcluirFunc.setText("Excluir");
+        btExcluirFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirFuncActionPerformed(evt);
+            }
+        });
+
+        btCancelarFunc.setText("Cancelar");
+        btCancelarFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarFuncActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(campoNumExcluirFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btExcluirFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCancelarFunc)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNumExcluirFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExcluirFunc)
+                    .addComponent(btCancelarFunc))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout frameExcluirFuncionarioLayout = new javax.swing.GroupLayout(frameExcluirFuncionario.getContentPane());
         frameExcluirFuncionario.getContentPane().setLayout(frameExcluirFuncionarioLayout);
         frameExcluirFuncionarioLayout.setHorizontalGroup(
             frameExcluirFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frameExcluirFuncionarioLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(btCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         frameExcluirFuncionarioLayout.setVerticalGroup(
             frameExcluirFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirFuncionarioLayout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addComponent(btCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        frameListarClientes.setLocation(new java.awt.Point(500, 150));
+        frameListarClientes.setMinimumSize(new java.awt.Dimension(714, 315));
+
+        btVoltarCliente.setText("Voltar");
+        btVoltarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarClienteActionPerformed(evt);
+            }
+        });
+
+        tbListarCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "CPF/RG", "Rua", "Número", "Bairro", "Cidade", "Estado", "Data de nascimento", "Telefone", "Quarto reservado", "Data da reserva", "codCliente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tbListarCliente);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btVoltarCliente))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltarCliente)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout frameListarClientesLayout = new javax.swing.GroupLayout(frameListarClientes.getContentPane());
+        frameListarClientes.getContentPane().setLayout(frameListarClientesLayout);
+        frameListarClientesLayout.setHorizontalGroup(
+            frameListarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameListarClientesLayout.setVerticalGroup(
+            frameListarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        frameExcluirCliente.setLocation(new java.awt.Point(500, 150));
+        frameExcluirCliente.setMinimumSize(new java.awt.Dimension(190, 140));
+        frameExcluirCliente.setPreferredSize(new java.awt.Dimension(190, 140));
+
+        jLabel25.setText("Código do cliente:");
+
+        btExcluirCli.setText("Excluir");
+        btExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirCliActionPerformed(evt);
+            }
+        });
+
+        btCancelarCliente.setText("Cancelar");
+        btCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarClienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(campoNumExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(btExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCancelarCliente)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNumExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExcluirCli)
+                    .addComponent(btCancelarCliente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameExcluirClienteLayout = new javax.swing.GroupLayout(frameExcluirCliente.getContentPane());
+        frameExcluirCliente.getContentPane().setLayout(frameExcluirClienteLayout);
+        frameExcluirClienteLayout.setHorizontalGroup(
+            frameExcluirClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameExcluirClienteLayout.setVerticalGroup(
+            frameExcluirClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -477,16 +947,54 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconmonstr-gear-10-icon-256.png"))); // NOI18N
 
-        btExcluirrFuncionario.setText("Excluir funcionário");
-        btExcluirrFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        btExcluirFuncionario.setText("Excluir funcionário");
+        btExcluirFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirrFuncionarioActionPerformed(evt);
+                btExcluirFuncionarioActionPerformed(evt);
             }
         });
 
         btExcluirQuarto.setText("Excluir quarto");
+        btExcluirQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirQuartoActionPerformed(evt);
+            }
+        });
+
+        btListarQuartos.setText("Listar quartos");
+        btListarQuartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarQuartosActionPerformed(evt);
+            }
+        });
+
+        btCheckOut.setText("Check-Out");
+        btCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCheckOutActionPerformed(evt);
+            }
+        });
 
         btListarFuncionario.setText("Listar funcionários");
+        btListarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        btListarClientes.setText("Listar clientes");
+        btListarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarClientesActionPerformed(evt);
+            }
+        });
+
+        btExcluirCliente.setText("Excluir cliente");
+        btExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
@@ -495,25 +1003,30 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             .addGroup(painelFundoLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelFundoLayout.createSequentialGroup()
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btCadastroFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btExibirRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btExcluirrFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addComponent(btExcluirQuarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btListarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(29, 29, 29))
-                    .addGroup(painelFundoLayout.createSequentialGroup()
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(181, 181, 181))
-                            .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(10, 10, 10))))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btSair)
+                        .addGroup(painelFundoLayout.createSequentialGroup()
+                            .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btCadastroFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btExibirRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btListarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(32, 32, 32)
+                            .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btListarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                    .addComponent(btListarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(36, 36, 36)
+                            .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(painelFundoLayout.createSequentialGroup()
+                                    .addComponent(btExcluirQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(btCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,20 +1034,25 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btExibirRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExibirRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEmitir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btListarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btEmitir, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(btListarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btExcluirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExcluirrFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btListarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastroQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExcluirQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(btExcluirQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btListarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -543,11 +1061,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -621,9 +1141,107 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameCadastroFunc.dispose();
     }//GEN-LAST:event_btSairCadastroActionPerformed
 
-    private void btExcluirrFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirrFuncionarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btExcluirrFuncionarioActionPerformed
+    private void btExcluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirFuncionarioActionPerformed
+        this.frameExcluirFuncionario.setVisible(true);
+    }//GEN-LAST:event_btExcluirFuncionarioActionPerformed
+
+    private void btListarQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarQuartosActionPerformed
+        String resultados[][]=consulta.listarQuartos();
+        this.frameListarQuartos.setVisible(true);
+        DefaultTableModel model = (DefaultTableModel) tbListarQuartos.getModel();
+        for(int i=0;i<resultados.length;i++){
+            model.addRow(new Object[]{resultados[i][0],resultados[i][1],resultados[i][2],resultados[i][3],resultados[i][4],resultados[i][5],resultados[i][6]});
+        }
+    }//GEN-LAST:event_btListarQuartosActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        while(tbListarQuartos.getModel().getRowCount()>0){
+            ((DefaultTableModel)tbListarQuartos.getModel()).removeRow(0);
+        }
+        this.frameListarQuartos.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void btExcluirQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirQuartoActionPerformed
+        this.frameExcluirQuarto.setVisible(true);
+    }//GEN-LAST:event_btExcluirQuartoActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        gerenciamento.excluirQuarto(Integer.parseInt(this.campoNumExcluir.getText()));
+        this.frameExcluirQuarto.dispose();
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void btCancelarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarQuartoActionPerformed
+        this.frameExcluirQuarto.dispose();
+    }//GEN-LAST:event_btCancelarQuartoActionPerformed
+
+    private void btCancelarCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarCheckActionPerformed
+        this.frameCheckOut.dispose();
+    }//GEN-LAST:event_btCancelarCheckActionPerformed
+
+    private void btConfirmaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmaCheckActionPerformed
+        this.gerenciamento.realizarCheckOut(Integer.parseInt(this.campoCheckOut.getText()));
+        this.frameCheckOut.dispose();
+    }//GEN-LAST:event_btConfirmaCheckActionPerformed
+
+    private void btCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckOutActionPerformed
+        this.frameCheckOut.setVisible(true);
+    }//GEN-LAST:event_btCheckOutActionPerformed
+
+    private void btVoltarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarFuncActionPerformed
+        while(tbListarFuncionarios.getModel().getRowCount()>0){
+            ((DefaultTableModel)tbListarFuncionarios.getModel()).removeRow(0);
+        }
+        this.frameListarFuncionarios.dispose();
+    }//GEN-LAST:event_btVoltarFuncActionPerformed
+
+    private void btListarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarFuncionarioActionPerformed
+        String resultados[][]=consulta.listarFuncionarios();
+        this.frameListarFuncionarios.setVisible(true);
+        DefaultTableModel model = (DefaultTableModel) tbListarFuncionarios.getModel();
+        for(int i=0;i<resultados.length;i++){
+            model.addRow(new Object[]{resultados[i][0],resultados[i][1],resultados[i][2],resultados[i][3],resultados[i][4],resultados[i][5]
+                    ,resultados[i][6],resultados[i][7],resultados[i][8],resultados[i][9],resultados[i][10],resultados[i][11],resultados[i][12]});
+        }
+    }//GEN-LAST:event_btListarFuncionarioActionPerformed
+
+    private void btExcluirFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirFuncActionPerformed
+        this.gerenciamento.excluirFuncionario(Integer.parseInt(this.campoNumExcluirFunc.getText()));
+        this.frameExcluirFuncionario.dispose();
+    }//GEN-LAST:event_btExcluirFuncActionPerformed
+
+    private void btCancelarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarFuncActionPerformed
+        this.frameExcluirFuncionario.dispose();
+    }//GEN-LAST:event_btCancelarFuncActionPerformed
+
+    private void btListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarClientesActionPerformed
+       String resultados[][]=consulta.listarClientes();
+        this.frameListarClientes.setVisible(true);
+        DefaultTableModel model = (DefaultTableModel) tbListarCliente.getModel();
+        for(int i=0;i<resultados.length;i++){
+            model.addRow(new Object[]{resultados[i][0],resultados[i][1],resultados[i][2],resultados[i][3],resultados[i][4],resultados[i][5]
+                    ,resultados[i][6],resultados[i][7],resultados[i][8],resultados[i][9],resultados[i][10],resultados[i][11]});
+        }
+    }//GEN-LAST:event_btListarClientesActionPerformed
+
+    private void btVoltarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarClienteActionPerformed
+        while(tbListarCliente.getModel().getRowCount()>0){
+            ((DefaultTableModel)tbListarCliente.getModel()).removeRow(0);
+        }
+        this.frameListarClientes.dispose();
+    }//GEN-LAST:event_btVoltarClienteActionPerformed
+
+    private void btExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirCliActionPerformed
+        this.gerenciamento.excluirCliente(Integer.parseInt(this.campoNumExcluirCliente.getText()));
+        this.frameExcluirCliente.dispose();
+    }//GEN-LAST:event_btExcluirCliActionPerformed
+
+    private void btCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarClienteActionPerformed
+        this.frameExcluirCliente.dispose();
+    }//GEN-LAST:event_btCancelarClienteActionPerformed
+
+    private void btExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirClienteActionPerformed
+        this.frameExcluirCliente.setVisible(true);
+    }//GEN-LAST:event_btExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -666,23 +1284,41 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btCadastrarQuarto;
     private javax.swing.JButton btCadastroFunc;
     private javax.swing.JButton btCadastroQuartos;
-    private javax.swing.JComboBox btCodigo;
+    private javax.swing.JButton btCancelarCheck;
+    private javax.swing.JButton btCancelarCliente;
+    private javax.swing.JButton btCancelarFunc;
+    private javax.swing.JButton btCancelarQuarto;
+    private javax.swing.JButton btCheckOut;
+    private javax.swing.JButton btConfirmaCheck;
     private javax.swing.JButton btEmitir;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btExcluirCli;
+    private javax.swing.JButton btExcluirCliente;
+    private javax.swing.JButton btExcluirFunc;
+    private javax.swing.JButton btExcluirFuncionario;
     private javax.swing.JButton btExcluirQuarto;
-    private javax.swing.JButton btExcluirrFuncionario;
     private javax.swing.JButton btExibirRelatorios;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btListarClientes;
     private javax.swing.JButton btListarFuncionario;
+    private javax.swing.JButton btListarQuartos;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSairCadastro;
     private javax.swing.JButton btSairQuarto;
+    private javax.swing.JButton btVoltar;
+    private javax.swing.JButton btVoltarCliente;
+    private javax.swing.JButton btVoltarFunc;
     private javax.swing.JTextField campoBairro;
+    private javax.swing.JTextField campoCheckOut;
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoCodigo;
     private javax.swing.JTextField campoCpf;
     private javax.swing.JTextField campoData;
     private javax.swing.JTextField campoEstado;
     private javax.swing.JTextField campoNome;
+    private javax.swing.JTextField campoNumExcluir;
+    private javax.swing.JTextField campoNumExcluirCliente;
+    private javax.swing.JTextField campoNumExcluirFunc;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoPreco;
     private javax.swing.JTextField campoRua;
@@ -692,7 +1328,13 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JFrame frameCadastroFunc;
     private javax.swing.JFrame frameCadastroQuarto;
+    private javax.swing.JFrame frameCheckOut;
+    private javax.swing.JFrame frameExcluirCliente;
     private javax.swing.JFrame frameExcluirFuncionario;
+    private javax.swing.JFrame frameExcluirQuarto;
+    private javax.swing.JFrame frameListarClientes;
+    private javax.swing.JFrame frameListarFuncionarios;
+    private javax.swing.JFrame frameListarQuartos;
     private javax.swing.JSpinner giratorioNumQuarto;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -709,6 +1351,10 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -718,9 +1364,22 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JCheckBox selecaoAr;
     private javax.swing.JCheckBox selecaoFrigobar;
     private javax.swing.JCheckBox selecaoWifi;
+    private javax.swing.JTable tbListarCliente;
+    private javax.swing.JTable tbListarFuncionarios;
+    private javax.swing.JTable tbListarQuartos;
     // End of variables declaration//GEN-END:variables
 }

@@ -138,6 +138,63 @@ public class Quarto {
         banco.desconectarDoBanco();
     }
     
+    public String[][] listarQuartos()
+    {
+        String resultados[][];
+        int cont=0;
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM quarto;");
+        try{
+            while(rst.next()){
+                cont++;
+            }
+            resultados=new String[cont][7];
+            cont=0;
+            rst=banco.pesquisarNoBanco("SELECT * FROM quarto;");
+            while(rst.next()){
+                resultados[cont][0]=String.valueOf(rst.getInt("numero"));
+                resultados[cont][1]=rst.getString("tipo");
+                resultados[cont][2]=rst.getString("status");
+                resultados[cont][3]=String.valueOf(rst.getDouble("valorDiario"));
+                if(rst.getBoolean("arCondicionado")==true){
+                    resultados[cont][4]="Possui";
+                }
+                else{
+                    resultados[cont][4]="Não possui";
+                }
+                if(rst.getBoolean("wifi")==true){
+                    resultados[cont][5]="Possui";
+                }
+                else{
+                    resultados[cont][5]="Não possui";
+                }
+                if(rst.getBoolean("frigobar")==true){
+                    resultados[cont][6]="Possui";
+                }
+                else{
+                    resultados[cont][6]="Não possui";
+                }
+                
+                cont++;
+            }
+            return resultados;
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+        return null;
+    }
+    
+    public void excluirQuarto(int numero){
+        banco.conectarAoBanco();
+        banco.modificarTabela("DELETE FROM quarto WHERE numero="+numero+";");
+    }
+    
+    public void realizarCheckOut(int numero){
+        banco.conectarAoBanco();
+        banco.modificarTabela("UPDATE quarto SET status='Desocupado' WHERE numero="+numero+";");
+    }
+    
     public String[] exibirQuarto(int numero){
         String vetor[]=new String[7];
         banco.conectarAoBanco();

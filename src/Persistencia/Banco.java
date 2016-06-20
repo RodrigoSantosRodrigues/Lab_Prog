@@ -78,7 +78,7 @@ public class Banco {
         }
     }
     
-    public void criarUsuarioNoBanco(String queryCriar){
+    public void gerenciarUsuarioNoBanco(String queryCriar){
         try{
             this.setStmt(this.getConnection().createStatement());
             stmt.execute(queryCriar);

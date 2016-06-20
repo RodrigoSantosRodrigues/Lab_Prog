@@ -222,7 +222,6 @@ public class ReservaFrame extends javax.swing.JFrame {
         frameSelecionados.setLocation(new java.awt.Point(500, 100));
         frameSelecionados.setMinimumSize(new java.awt.Dimension(210, 170));
         frameSelecionados.setName("Quartos disponíveis"); // NOI18N
-        frameSelecionados.setPreferredSize(new java.awt.Dimension(210, 121));
         frameSelecionados.setResizable(false);
 
         jPanel3.setMinimumSize(new java.awt.Dimension(120, 121));
@@ -326,7 +325,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Cadastro de cliente(s)");
 
-        jLabel4.setText("Nome completo do responsável:");
+        jLabel4.setText("Nome completo do(a)  responsável:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "RG" }));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -646,12 +645,14 @@ public class ReservaFrame extends javax.swing.JFrame {
             Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
             this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
         }
+        this.jLabel4.setText("Nome completo do(a) responsável:");
         this.dispose();
     }//GEN-LAST:event_btReservarActionPerformed
 
     private void btResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResponsavelActionPerformed
         this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
             Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+        this.jLabel4.setText("Nome do(a) acompanhante:");
         btResponsavel.setEnabled(false);
         jLabel9.setVisible(false);
         jLabel15.setVisible(false);
@@ -666,7 +667,8 @@ public class ReservaFrame extends javax.swing.JFrame {
         this.campoCidade.setVisible(false);
         this.campoData.setVisible(false);
         this.campoEstado.setVisible(false);
-        this.campoNumero.setVisible(false);    
+        this.campoNumero.setVisible(false);
+        this.btReservar.setEnabled(true);
     }//GEN-LAST:event_btResponsavelActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed

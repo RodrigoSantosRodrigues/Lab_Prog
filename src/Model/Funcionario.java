@@ -131,6 +131,18 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         return quarto.exibirQuarto(numero);
     }
     
+    public String[][] listarQuartos(){
+        return quarto.listarQuartos();
+    }
+    
+    public void excluirQuarto(int numero){
+        quarto.excluirQuarto(numero);
+    }
+    
+    public void realizarCheckOut(int numero){
+        quarto.realizarCheckOut(numero);
+    }
+    
     public int[] exibirSelecionados(String selecionados[]){
         return quarto.exibirSelecionados(selecionados);
     }
@@ -144,12 +156,12 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         banco.conectarAoBanco();
         try{
             if(categoria.equals("Gerente")){
-                banco.criarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.gerenciarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
                 banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
                     "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
             else{
-                banco.criarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
+                banco.gerenciarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
                 banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
                     "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
@@ -166,6 +178,57 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         banco.desconectarDoBanco();
     }
     
+    public String[][] listarFuncionarios(){
+        String resultados[][];
+        int cont=0;
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM funcionario;");
+        try{
+            while(rst.next()){
+                cont++;
+            }
+            resultados=new String[cont][13];
+            cont=0;
+            rst=banco.pesquisarNoBanco("SELECT * FROM funcionario;");
+            while(rst.next()){
+                resultados[cont][0]=rst.getString("nome");
+                resultados[cont][1]=rst.getString("cpf");
+                resultados[cont][2]=rst.getString("rua");
+                resultados[cont][3]=String.valueOf(rst.getInt("numero"));
+                resultados[cont][4]=rst.getString("bairro");
+                resultados[cont][5]=rst.getString("cidade");
+                resultados[cont][6]=rst.getString("estado");
+                resultados[cont][7]=rst.getString("dataNascimento");
+                resultados[cont][8]=rst.getString("telefone");
+                resultados[cont][9]=rst.getString("usuario");
+                resultados[cont][10]=rst.getString("senha");
+                resultados[cont][11]=rst.getString("categoria");
+                resultados[cont][12]=String.valueOf(rst.getInt("codFuncionario"));
+                cont++;
+            }
+            return resultados;
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+        return null;
+    }
+    
+    public void excluirFuncionario(int codFuncionario){
+        String usuario;
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT usuario FROM funcionario WHERE codFuncionario="+codFuncionario+";");
+        try{
+            rst.next();
+            usuario=rst.getString("usuario");
+            banco.modificarTabela("DELETE FROM funcionario WHERE codFuncionario="+codFuncionario+";");
+            banco.gerenciarUsuarioNoBanco("DROP USER '"+usuario+"'@'localhost';");
+        }
+        catch(SQLException e){
+            System.err.println(e);
+        }
+    }
+    
     public void reservarQuarto(int numero){
         this.quarto.reservarQuarto(numero);
     }
@@ -176,5 +239,13 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     
     public void cadastrarClienteNormal(String nome,String cpfrg,int numQuarto){
         this.cliente.cadastrarClienteNormal(nome, cpfrg,numQuarto);
+    }
+    
+    public String[][] listarClientes(){
+        return this.cliente.listarClientes();
+    }
+    
+    public void excluirCliente(int codCliente){
+        this.cliente.excluirCliente(codCliente);
     }
 }

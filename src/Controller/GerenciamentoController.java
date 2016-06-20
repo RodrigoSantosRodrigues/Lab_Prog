@@ -15,8 +15,24 @@ public class GerenciamentoController {
         gerenciamento.cadastrarQuarto(numero,tipo,status,valorDiario,ar,wifi,frigobar);
     }
     
+    public void excluirQuarto(int numero){
+        gerenciamento.excluirQuarto(numero);
+    }
+    
+    public void realizarCheckOut(int numero){
+        gerenciamento.realizarCheckOut(numero);
+    }
+    
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
             String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
         gerenciamento.cadastrarFuncionario(nome, cpf, rua, bairro, numero, cidade, estado, dataNascimento, telefone,codFuncionario, usuario, senha, categoria);
+    }
+    
+    public void excluirFuncionario(int codFuncionario){
+        gerenciamento.excluirFuncionario(codFuncionario);
+    }
+    
+    public void excluirCliente(int codCliente){
+        gerenciamento.excluirCliente(codCliente);
     }
 }

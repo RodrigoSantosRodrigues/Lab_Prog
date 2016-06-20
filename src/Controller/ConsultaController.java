@@ -36,7 +36,19 @@ public class ConsultaController {
         return funcionario.exibirSelecionadosReserva(selecionados);
     }
     
+    public String[][] listarFuncionarios(){
+        return funcionario.listarFuncionarios();
+    }
+    
     public void limparUsuarioAtual(){
         funcionario.limparUsuarioAtual();
+    }
+    
+    public String[][] listarQuartos(){
+        return funcionario.listarQuartos();
+    }
+    
+    public String[][] listarClientes(){
+        return funcionario.listarClientes();
     }
 }
