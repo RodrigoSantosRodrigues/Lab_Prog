@@ -16,10 +16,6 @@ import java.sql.Statement;
 public class ConsultaController {
     Funcionario funcionario=new Funcionario();
     
-    /*public boolean nivelFuncionario(){
-        return this.getFuncionario().verificarPermissaoGerenciamento();
-    }*/
-    
     public boolean login(String usuario,String senha){
         return funcionario.logar(usuario, senha);
     }
@@ -34,6 +30,10 @@ public class ConsultaController {
     
     public int[] consultarSelecionados(String selecionados[]){
         return funcionario.exibirSelecionados(selecionados);
+    }
+    
+    public String[][] consultarSelecionadosReserva(String selecionados[]){
+        return funcionario.exibirSelecionadosReserva(selecionados);
     }
     
     public void limparUsuarioAtual(){

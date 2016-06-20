@@ -192,7 +192,7 @@
     <Container class="javax.swing.JFrame" name="frameSelecionados">
       <Properties>
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-          <Point value="[250, 150]"/>
+          <Point value="[500, 100]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[150, 170]"/>

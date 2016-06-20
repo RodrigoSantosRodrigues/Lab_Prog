@@ -196,7 +196,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
         );
 
-        frameSelecionados.setLocation(new java.awt.Point(250, 150));
+        frameSelecionados.setLocation(new java.awt.Point(500, 100));
         frameSelecionados.setMinimumSize(new java.awt.Dimension(150, 170));
         frameSelecionados.setName("Quartos disponíveis"); // NOI18N
         frameSelecionados.setPreferredSize(new java.awt.Dimension(150, 170));
@@ -481,7 +481,8 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoFrigobarActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-            this.frameSelecionados.dispose();
+        this.comboSelecionados.removeAllItems();
+        this.frameSelecionados.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
     public String getCampoNumQuarto(){
         return this.giratorioNumQuarto.getToolTipText();

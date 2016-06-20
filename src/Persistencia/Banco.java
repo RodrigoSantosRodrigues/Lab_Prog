@@ -37,7 +37,7 @@ public class Banco {
     public boolean conectarAoBanco(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","root",""));
+            this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","Pedro","123"));
             return true;
         }
         catch(Exception e){

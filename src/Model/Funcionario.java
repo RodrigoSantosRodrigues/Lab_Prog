@@ -18,8 +18,8 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     ResultSet rst;
     Banco banco=new Banco();
     Quarto quarto=new Quarto();
-    String usuario="Batata";
-    String senhaT="Batata";
+    Reserva reserva=new Reserva();
+    Cliente cliente=new Cliente();
     
     /**
      * @return the codFuncionario
@@ -123,10 +123,6 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     public void exibirRelatorios(String tipoRelatorio){       
     }
     
-    /*public Quarto consultarQuarto(int numQuarto){
-        return Quarto;
-    }*/
-    
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
         quarto.cadastrarQuarto(numero, tipo, status, valorDiario, ar, wifi, frigobar);
     }
@@ -137,6 +133,10 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     
     public int[] exibirSelecionados(String selecionados[]){
         return quarto.exibirSelecionados(selecionados);
+    }
+    
+    public String[][] exibirSelecionadosReserva(String selecionados[]){
+        return reserva.exibirSelecionadosReserva(selecionados);
     }
     
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
@@ -166,12 +166,15 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         banco.desconectarDoBanco();
     }
     
-    /*public Reserva reservarQuarto(int numero,int numQuarto){
-        return Reserva;
-    }*/
+    public void reservarQuarto(int numero){
+        this.quarto.reservarQuarto(numero);
+    }
     
-    /*public Cliente cadastrarCliente(String nome,String cpf,String rua,String bairro,int numero,String cidade,String estado,String dataNascimento,
-            String telefone){
-        return Cliente;
-    }*/
+    public void cadastrarClienteResp(String nome,String cpfrg,String rua,String bairro,int numero,String cidade,String estado,String dataNasc,String telefone,int numQuarto){
+        this.cliente.cadastrarClienteResp(nome, cpfrg, rua, bairro, numero, cidade, estado, dataNasc, telefone,numQuarto);
+    }
+    
+    public void cadastrarClienteNormal(String nome,String cpfrg,int numQuarto){
+        this.cliente.cadastrarClienteNormal(nome, cpfrg,numQuarto);
+    }
 }

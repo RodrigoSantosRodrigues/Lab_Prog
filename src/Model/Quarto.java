@@ -118,6 +118,11 @@ public class Quarto {
         this.valorDiario = valorDiario;
     }
     
+    public void reservarQuarto(int numero){
+        banco.conectarAoBanco();
+        banco.modificarTabela("UPDATE quarto SET status='Ocupado' WHERE numero="+numero+";");
+    }
+    
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
         banco.conectarAoBanco();
         try{
@@ -160,21 +165,22 @@ public class Quarto {
         int num[];
         int cont=0;
         banco.conectarAoBanco();
-        rst=banco.pesquisarNoBanco("SELECT * FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+"AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
-                +"AND wifi="+Boolean.parseBoolean(selecionados[3])+"AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");
-        try{
-            while(rst.next()){
-               cont++; 
-               System.out.println(cont);
+        rst=banco.pesquisarNoBanco("SELECT numero FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+" AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
+             +" AND wifi="+Boolean.parseBoolean(selecionados[3])+" AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");
+        try{  
+            while(rst.next()){  
+                
+                cont++; 
             }
             num=new int[cont];
             cont=0;
-            rst.first();
-            rst.
+            rst=banco.pesquisarNoBanco("SELECT numero,status FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+" AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
+             +" AND wifi="+Boolean.parseBoolean(selecionados[3])+" AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");         
             while(rst.next()){
-               System.out.println(rst.getInt("numero"));
-               num[cont]=rst.getInt("numero");
-               cont++;
+                if(rst.getString("status").equals("Desocupado")){
+                   num[cont]=rst.getInt("numero");
+                   cont++;
+                }
             }
             return num;
         }
@@ -183,5 +189,4 @@ public class Quarto {
         }  
         return null;
     }
-    
 }
