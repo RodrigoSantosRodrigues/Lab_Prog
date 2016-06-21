@@ -6,6 +6,7 @@
 package Persistencia;
 import com.mysql.jdbc.Connection;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,9 +29,7 @@ public class Banco {
             this.setConnection((Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel",usuario,senha));
             return true;
         }
-        catch(Exception e){
-            System.err.println(e);
-        }
+        catch(Exception e){}
         return false;
     }
     
@@ -73,9 +72,7 @@ public class Banco {
             this.setStmt(this.getConnection().createStatement());
             stmt.execute(queryCriar);
         }
-        catch(Exception e){
-            System.err.println(e);
-        }
+        catch(Exception e){}
     }
     
     public void gerenciarUsuarioNoBanco(String queryCriar){

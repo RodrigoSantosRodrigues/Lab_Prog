@@ -1,5 +1,6 @@
 package View;
 import Controller.*;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -48,7 +49,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         frameSelecionados = new javax.swing.JFrame();
         jPanel3 = new javax.swing.JPanel();
         comboSelecionados = new javax.swing.JComboBox<>();
-        btVoltar = new javax.swing.JButton();
+        btSelecionaQuarto = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         btCancelar = new javax.swing.JButton();
         painelFundo = new javax.swing.JPanel();
@@ -100,7 +101,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         jLabel10.setText("Categoria do quarto:");
 
         caixaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
-        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.setText("Diária:");
 
@@ -115,16 +116,16 @@ public class ReservaFrame extends javax.swing.JFrame {
 
         jLabel13.setText("Wi-Fi:");
 
-        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel14.setText("Frigobar:");
 
-        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btSelecionar.setText("Selecionar");
-        btSelecionar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btSelecionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSelecionarActionPerformed(evt);
@@ -133,7 +134,7 @@ public class ReservaFrame extends javax.swing.JFrame {
 
         btSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair1.setText("Sair");
-        btSair1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btSair1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSair1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSair1ActionPerformed(evt);
@@ -219,6 +220,7 @@ public class ReservaFrame extends javax.swing.JFrame {
             .addComponent(painelConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        frameSelecionados.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameSelecionados.setLocation(new java.awt.Point(500, 100));
         frameSelecionados.setMinimumSize(new java.awt.Dimension(210, 170));
         frameSelecionados.setName("Quartos disponíveis"); // NOI18N
@@ -226,16 +228,20 @@ public class ReservaFrame extends javax.swing.JFrame {
 
         jPanel3.setMinimumSize(new java.awt.Dimension(120, 121));
 
-        btVoltar.setText("Selecionar");
-        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+        comboSelecionados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btSelecionaQuarto.setText("Selecionar");
+        btSelecionaQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSelecionaQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVoltarActionPerformed(evt);
+                btSelecionaQuartoActionPerformed(evt);
             }
         });
 
         jLabel18.setText("Selecionar quarto para reserva:");
 
         btCancelar.setText("Cancelar");
+        btCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -252,7 +258,7 @@ public class ReservaFrame extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btVoltar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSelecionaQuarto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(comboSelecionados, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btCancelar)))
@@ -267,7 +273,7 @@ public class ReservaFrame extends javax.swing.JFrame {
                 .addComponent(comboSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btVoltar)
+                    .addComponent(btSelecionaQuarto)
                     .addComponent(btCancelar))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -293,7 +299,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         painelFundo.setMinimumSize(new java.awt.Dimension(848, 613));
 
         btReservar.setText("Reservar quarto");
-        btReservar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btReservar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btReservar.setMaximumSize(new java.awt.Dimension(141, 23));
         btReservar.setMinimumSize(new java.awt.Dimension(141, 23));
         btReservar.setPreferredSize(new java.awt.Dimension(141, 23));
@@ -314,7 +320,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         campoTipo.setBackground(new java.awt.Color(204, 204, 204));
 
         btMudarQuarto.setText("Selecionar outro quarto");
-        btMudarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btMudarQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btMudarQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMudarQuartoActionPerformed(evt);
@@ -328,7 +334,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         jLabel4.setText("Nome completo do(a)  responsável:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "RG" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
@@ -343,7 +349,7 @@ public class ReservaFrame extends javax.swing.JFrame {
 
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -359,7 +365,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         jLabel17.setText("Número de hospedes:");
 
         caixaNumHospedes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
-        caixaNumHospedes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        caixaNumHospedes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         caixaNumHospedes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 caixaNumHospedesItemStateChanged(evt);
@@ -367,6 +373,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         });
 
         btResponsavel.setText("Cadastrar responsável");
+        btResponsavel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btResponsavel.setEnabled(false);
         btResponsavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -588,6 +595,7 @@ public class ReservaFrame extends javax.swing.JFrame {
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         int num;
+        this.btSelecionaQuarto.setEnabled(false);
         String selecionados[]=new String[5];
         selecionados[0]=String.valueOf(this.caixaTipo.getSelectedItem());
         selecionados[1]=this.campoPreco1.getText();
@@ -609,26 +617,30 @@ public class ReservaFrame extends javax.swing.JFrame {
         else{
             selecionados[4]="false";
         }
-        String info[][]=consulta.consultarSelecionadosReserva(selecionados);
-        for(int i=0;i<info.length;i++){
-            if(info[i][0]!=null){
-                comboSelecionados.addItem(String.valueOf(info[i][0]));
-                this.btVoltar.setEnabled(true);
+        try{
+            String info[][]=consulta.consultarSelecionadosReserva(selecionados);
+            for(int i=0;i<info.length;i++){
+                if(info[i][0]!=null){
+                    comboSelecionados.addItem(String.valueOf(info[i][0]));
+                    this.btSelecionaQuarto.setEnabled(true);
+                }
+                else{
+                    this.btSelecionaQuarto.setEnabled(false);
+                }
             }
-            else{
-                this.btVoltar.setEnabled(false);
+            this.campoNumQuarto.setText(String.valueOf(comboSelecionados.getSelectedItem()));
+            for(int i=0;i<info.length;i++){
+                if(info[i][0]!=null&&info[i][0].equals(this.campoNumQuarto.getText())){
+                    this.campoTipo.setText(info[i][1]);
+                    this.campoPreco.setText(info[i][2]);
+                    break;
+                }
             }
+            this.frameSelecionados.setVisible(true);
         }
-        this.campoNumQuarto.setText(String.valueOf(comboSelecionados.getSelectedItem()));
-        for(int i=0;i<info.length;i++){
-            if(info[i][0]!=null&&info[i][0].equals(this.campoNumQuarto.getText())){
-                this.campoTipo.setText(info[i][1]);
-                this.campoPreco.setText(info[i][2]);
-                break;
-            }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Não existem quartos com essas descrições!");
         }
-        this.frameSelecionados.setVisible(true);
-        frameConsulta.dispose();
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSair1ActionPerformed
@@ -636,46 +648,59 @@ public class ReservaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btSair1ActionPerformed
 
     private void btReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservarActionPerformed
-        if(String.valueOf(this.caixaNumHospedes.getSelectedItem()).equals("2")){
-            this.reserva.cadastrarClienteNormal(this.campoNome.getText(), this.campoCpfRg.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
-            this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+        try{
+            if(String.valueOf(this.caixaNumHospedes.getSelectedItem()).equals("2")){
+                this.reserva.cadastrarClienteNormal(this.campoNome.getText(), this.campoCpfRg.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+                this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+            }
+            else{
+                this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
+                Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+                this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+            }
+            this.jLabel4.setText("Nome completo do(a) responsável:");
+            this.dispose();
         }
-        else{
-            this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
-            Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
-            this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Campos inválidos ou preenchidos incorretamente!");
         }
-        this.jLabel4.setText("Nome completo do(a) responsável:");
-        this.dispose();
     }//GEN-LAST:event_btReservarActionPerformed
-
-    private void btResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResponsavelActionPerformed
-        this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
-            Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+    private void mudarCamposCadastro(){
         this.jLabel4.setText("Nome do(a) acompanhante:");
-        btResponsavel.setEnabled(false);
-        jLabel9.setVisible(false);
-        jLabel15.setVisible(false);
-        jLabel16.setVisible(false);
+        this.btResponsavel.setEnabled(false);
+        this.jLabel9.setVisible(false);
+        this.jLabel15.setVisible(false);
+        this.jLabel16.setVisible(false);
         this.jLabel19.setVisible(false);
         this.jLabel20.setVisible(false);
         this.jLabel22.setVisible(false);
         this.jLabel23.setVisible(false);
-        campoRua.setVisible(false);
-        campoTelefone.setVisible(false);
-        campoBairro.setVisible(false);
+        this.campoRua.setVisible(false);
+        this.campoTelefone.setVisible(false);
+        this.campoBairro.setVisible(false);
         this.campoCidade.setVisible(false);
         this.campoData.setVisible(false);
         this.campoEstado.setVisible(false);
         this.campoNumero.setVisible(false);
         this.btReservar.setEnabled(true);
+    }
+    private void btResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResponsavelActionPerformed
+        try{
+            this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
+                Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+            this.mudarCamposCadastro();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Campos inválidos ou preenchidos incorretamente!");
+        }
     }//GEN-LAST:event_btResponsavelActionPerformed
 
-    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+    private void btSelecionaQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionaQuartoActionPerformed
         this.setVisible(true);
         this.comboSelecionados.removeAllItems();
         this.frameSelecionados.dispose();
-    }//GEN-LAST:event_btVoltarActionPerformed
+        this.frameConsulta.dispose();
+    }//GEN-LAST:event_btSelecionaQuartoActionPerformed
 
     private void caixaNumHospedesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_caixaNumHospedesItemStateChanged
         if(String.valueOf(evt.getItem()).equals("1")){
@@ -689,7 +714,9 @@ public class ReservaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_caixaNumHospedesItemStateChanged
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        frameSelecionados.dispose();
+        this.frameSelecionados.dispose();
+        this.btSelecionar.setEnabled(true);
+        this.comboSelecionados.removeAllItems();
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
@@ -740,8 +767,8 @@ public class ReservaFrame extends javax.swing.JFrame {
     private javax.swing.JButton btResponsavel;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSair1;
+    private javax.swing.JButton btSelecionaQuarto;
     private javax.swing.JButton btSelecionar;
-    private javax.swing.JButton btVoltar;
     private javax.swing.JComboBox<String> caixaNumHospedes;
     private javax.swing.JComboBox<String> caixaTipo;
     private javax.swing.JTextField campoBairro;

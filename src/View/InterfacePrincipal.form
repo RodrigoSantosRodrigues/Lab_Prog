@@ -6,6 +6,7 @@
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="0"/>
         <Property name="title" type="java.lang.String" value="Deseja realmente sair?"/>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
           <Point value="[500, 250]"/>
         </Property>
@@ -65,7 +66,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sim"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -76,7 +77,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -106,7 +107,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta de quartos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -117,7 +118,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservar quarto"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -128,7 +129,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gerenciamento"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -139,7 +140,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sair"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -160,7 +161,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>

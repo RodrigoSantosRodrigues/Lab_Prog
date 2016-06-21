@@ -57,6 +57,12 @@ public class InterfaceLogin extends javax.swing.JFrame {
 
         jLabel1.setText("Nome de usuário:");
 
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoUsuarioKeyPressed(evt);
+            }
+        });
+
         jLabel2.setText("Senha:");
 
         campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -147,12 +153,36 @@ public class InterfaceLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btConectarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
 
     private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
-
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String password=String.valueOf(campoSenha.getPassword());
+            if(consulta.login(this.campoUsuario.getText(), password)){
+                InterfacePrincipal abrir=new InterfacePrincipal();
+                abrir.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorreto(s)!");
+            }
+        }
     }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void campoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuarioKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String password=String.valueOf(campoSenha.getPassword());
+            if(consulta.login(this.campoUsuario.getText(), password)){
+                InterfacePrincipal abrir=new InterfacePrincipal();
+                abrir.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorreto(s)!");
+            }
+        }
+    }//GEN-LAST:event_campoUsuarioKeyPressed
 
     /**
      * @param args the command line arguments

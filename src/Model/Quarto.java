@@ -7,6 +7,7 @@ package Model;
 import Persistencia.Banco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Sandra
@@ -19,7 +20,12 @@ public class Quarto {
     private boolean wifi,ar,frigobar;
     Banco banco=new Banco();
     ResultSet rst;
-
+    
+    public Quarto(){
+        banco.conectarAoBanco();
+        banco.criarTabelaNoBanco("CREATE TABLE quarto(numero integer unique not null,tipo varchar(15),status varchar(10),valorDiario double,arCondicionado boolean,wifi boolean,frigobar boolean);");
+        banco.desconectarDoBanco();
+    }
     /**
      * @return the wifi
      */
@@ -121,21 +127,20 @@ public class Quarto {
     public void reservarQuarto(int numero){
         banco.conectarAoBanco();
         banco.modificarTabela("UPDATE quarto SET status='Ocupado' WHERE numero="+numero+";");
+        banco.desconectarDoBanco();
     }
     
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){
         banco.conectarAoBanco();
         try{
-            banco.criarTabelaNoBanco("CREATE TABLE quarto(numero integer unique not null,tipo varchar(15),status varchar(10),valorDiario double,arCondicionado boolean,wifi boolean,frigobar boolean);");
+            banco.modificarTabela("INSERT INTO quarto values("+numero+",'"+tipo+"','"+status+"',"+valorDiario+",'"+ar+"','"+wifi+"','"+frigobar+"');");
         }
         catch(Exception e){
-        System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao cadastrar quarto!");
         }
-        finally{
-            banco.modificarTabela("INSERT INTO quarto values("+numero+",'"+tipo+"','"+status+"',"+valorDiario+",'"+ar+"','"+wifi+"','"+frigobar+"');");
+        finally{ 
             banco.desconectarDoBanco();
         }
-        banco.desconectarDoBanco();
     }
     
     public String[][] listarQuartos()
@@ -180,7 +185,10 @@ public class Quarto {
             return resultados;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao listar quartos!");
+        }
+        finally{
+            banco.desconectarDoBanco();
         }
         return null;
     }
@@ -188,11 +196,13 @@ public class Quarto {
     public void excluirQuarto(int numero){
         banco.conectarAoBanco();
         banco.modificarTabela("DELETE FROM quarto WHERE numero="+numero+";");
+        banco.desconectarDoBanco();
     }
     
     public void realizarCheckOut(int numero){
         banco.conectarAoBanco();
         banco.modificarTabela("UPDATE quarto SET status='Desocupado' WHERE numero="+numero+";");
+        banco.desconectarDoBanco();
     }
     
     public String[] exibirQuarto(int numero){
@@ -212,9 +222,11 @@ public class Quarto {
             return vetor;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Quarto não cadastrado!");
         }
-        banco.desconectarDoBanco();
+        finally{
+            banco.desconectarDoBanco();
+        }
         return null;
     }
     
@@ -225,8 +237,7 @@ public class Quarto {
         rst=banco.pesquisarNoBanco("SELECT numero FROM quarto WHERE tipo='"+selecionados[0]+"' AND valorDiario="+Double.parseDouble(selecionados[1])+" AND arCondicionado="+Boolean.parseBoolean(selecionados[2])
              +" AND wifi="+Boolean.parseBoolean(selecionados[3])+" AND frigobar="+Boolean.parseBoolean(selecionados[4])+";");
         try{  
-            while(rst.next()){  
-                
+            while(rst.next()){     
                 cont++; 
             }
             num=new int[cont];
@@ -242,8 +253,11 @@ public class Quarto {
             return num;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Não existem quartos com essas descrições!");
         }  
+        finally{
+            banco.desconectarDoBanco();
+        }
         return null;
     }
 }

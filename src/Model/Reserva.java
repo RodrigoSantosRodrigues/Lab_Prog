@@ -8,6 +8,7 @@ package Model;
 import java.sql.SQLException;
 import Persistencia.Banco;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Sandra
@@ -47,8 +48,11 @@ public class Reserva implements Relatorio{
             return info;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao exibir selecionados!");
         }  
+        finally{
+            banco.desconectarDoBanco();
+        }
         return null;
     }
     

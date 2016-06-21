@@ -57,6 +57,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         msgSair.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         msgSair.setTitle("Deseja realmente sair?");
+        msgSair.setAlwaysOnTop(true);
         msgSair.setLocation(new java.awt.Point(500, 250));
         msgSair.setMinimumSize(new java.awt.Dimension(190, 90));
         msgSair.setResizable(false);
@@ -64,7 +65,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         painelSair.setPreferredSize(new java.awt.Dimension(45, 45));
 
         btSim.setText("Sim");
-        btSim.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btSim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSimActionPerformed(evt);
@@ -72,7 +73,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         });
 
         btNao.setText("Não");
-        btNao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btNao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btNao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNaoActionPerformed(evt);
@@ -222,7 +223,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuConsultar.setText("Consulta de quartos");
-        menuConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuConsultarActionPerformed(evt);
@@ -231,7 +232,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuConsultar);
 
         menuHospedar.setText("Reservar quarto");
-        menuHospedar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuHospedar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuHospedar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuHospedarActionPerformed(evt);
@@ -240,7 +241,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuHospedar);
 
         menuGerenciamento.setText("Gerenciamento");
-        menuGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuGerenciamento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuGerenciamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuGerenciamentoActionPerformed(evt);
@@ -249,7 +250,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsulta.add(menuGerenciamento);
 
         menuSair.setText("Sair");
-        menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSairActionPerformed(evt);
@@ -263,7 +264,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuSobre.setText("Sobre");
-        menuSobre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuSobre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSobreActionPerformed(evt);
@@ -326,8 +327,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private void btSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSimActionPerformed
         consultas.limparUsuarioAtual();
-        msgSair.dispose();
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btSimActionPerformed
 
     private void btNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNaoActionPerformed

@@ -6,6 +6,7 @@
 package Model;
 import java.sql.*;
 import Persistencia.Banco;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Sandra
@@ -97,17 +98,18 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
             rst=banco.pesquisarNoBanco("SELECT f.categoria FROM funcionario as f,funcionarioatual as a WHERE a.usuario=f.usuario and a.senha=f.senha;");
             try{
                 while(rst.next()){
-                    this.setCategoria(rst.getString("categoria"));
+                    this.setCategoria(rst.getString("f.categoria"));
                     if(this.getCategoria().equals("Gerente")){
-                        banco.desconectarDoBanco();
                         return true;
                     }
                 }
             }
             catch(SQLException e){
-                System.err.println(e);
-                banco.desconectarDoBanco();
+                JOptionPane.showMessageDialog(null,"Erro ao encontrar funcionário logado!");
                 return false;
+            }
+            finally{
+                banco.desconectarDoBanco();
             }
         }
         banco.desconectarDoBanco();
@@ -152,30 +154,28 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     }
     
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
-        String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
+        String dataNascimento,String telefone,String usuario,String senha,String categoria){
         banco.conectarAoBanco();
         try{
             if(categoria.equals("Gerente")){
                 banco.gerenciarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
-                banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
-                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
+                banco.modificarTabela("INSERT INTO funcionario(nome,cpf,rua,bairro,numero,cidade,estado,dataNascimento,telefone,"
+                        + "usuario,senha,categoria) values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
+                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
             else{
                 banco.gerenciarUsuarioNoBanco("CREATE USER '"+usuario+"'@'localhost' IDENTIFIED BY '"+senha+"';");
-                banco.modificarTabela("INSERT INTO funcionario values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
-                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+codFuncionario+"','"+usuario+"','"+senha+"','"+categoria+"')");
+                banco.modificarTabela("INSERT INTO funcionario(nome,cpf,rua,bairro,numero,cidade,estado,dataNascimento,telefone,"
+                        + "usuario,senha,categoria) values('"+nome+"','"+cpf+"','"+rua+"','"+bairro+"','"+numero+"','"+cidade+
+                    "','"+estado+"','"+dataNascimento+"','"+telefone+"','"+usuario+"','"+senha+"','"+categoria+"')");
             }
-           
-            
-            banco.desconectarDoBanco();
         }
         catch(Exception e){
-        System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro ao cadastrar funcionário!");
         }
         finally{
-            
+            banco.desconectarDoBanco();
         }
-        banco.desconectarDoBanco();
     }
     
     public String[][] listarFuncionarios(){
@@ -209,7 +209,10 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
             return resultados;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao listar funcionários!");
+        }
+        finally{
+            banco.desconectarDoBanco();
         }
         return null;
     }
@@ -225,7 +228,10 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
             banco.gerenciarUsuarioNoBanco("DROP USER '"+usuario+"'@'localhost';");
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao excluir funcionário!");
+        }
+        finally{
+            banco.desconectarDoBanco();
         }
     }
     

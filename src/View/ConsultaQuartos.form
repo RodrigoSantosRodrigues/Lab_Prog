@@ -4,6 +4,7 @@
   <NonVisualComponents>
     <Container class="javax.swing.JFrame" name="frameNumQuarto">
       <Properties>
+        <Property name="defaultCloseOperation" type="int" value="0"/>
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
           <Point value="[500, 150]"/>
         </Property>
@@ -156,6 +157,9 @@
             <Component class="javax.swing.JButton" name="btOk">
               <Properties>
                 <Property name="text" type="java.lang.String" value="OK"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btOkActionPerformed"/>
@@ -191,6 +195,7 @@
     </Container>
     <Container class="javax.swing.JFrame" name="frameSelecionados">
       <Properties>
+        <Property name="defaultCloseOperation" type="int" value="0"/>
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
           <Point value="[500, 100]"/>
         </Property>
@@ -198,9 +203,6 @@
           <Dimension value="[150, 170]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Quartos dispon&#xed;veis" noResource="true"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[150, 170]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
 
@@ -255,6 +257,9 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -263,6 +268,9 @@
             <Component class="javax.swing.JButton" name="btVoltar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarActionPerformed"/>
@@ -409,12 +417,17 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JSpinner" name="giratorioNumQuarto">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btNumQuarto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -441,7 +454,7 @@
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -462,7 +475,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar selecionados"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -477,7 +490,7 @@
         <Component class="javax.swing.JCheckBox" name="selecaoAr">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
         </Component>
@@ -489,14 +502,14 @@
         <Component class="javax.swing.JCheckBox" name="selecaoWifi">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="selecaoFrigobar">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
         </Component>
@@ -512,7 +525,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>

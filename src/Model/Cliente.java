@@ -7,6 +7,7 @@ package Model;
 import Persistencia.Banco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Sandra
@@ -19,17 +20,20 @@ public class Cliente extends Pessoa{
         banco.conectarAoBanco();
         banco.criarTabelaNoBanco("CREATE TABLE cliente(nome varchar(30),cpfrg varchar(14),rua varchar(25),bairro varchar(20),numero integer,cidade varchar(20),"
                     + "estado varchar(2),dataNascimento varchar(10),telefone varchar(13),numQuarto integer,dataReserva timestamp,codCliente integer not null auto_increment,primary key(codCliente))");
+        banco.desconectarDoBanco();
     }
     
     public void cadastrarClienteResp(String nome,String cpfrg,String rua,String bairro,int numero,String cidade,String estado,String dataNasc,String telefone,int numQuarto){
         banco.conectarAoBanco();
         banco.modificarTabela("INSERT INTO cliente (nome,cpfrg,rua,bairro,numero,cidade,estado,dataNascimento,telefone,numQuarto) values('"+nome+"','"+cpfrg+"','"+rua+"','"+bairro+"',"+numero+",'"+cidade+"','"
                     +estado+"','"+dataNasc+"','"+telefone+"',"+numQuarto+");");
+        banco.desconectarDoBanco();
     }
     
     public void cadastrarClienteNormal(String nome,String cpfrg,int numQuarto){
         banco.conectarAoBanco();
         banco.modificarTabela("INSERT INTO cliente (nome,cpfrg,numQuarto) values('"+nome+"','"+cpfrg+"',"+numQuarto+");");
+        banco.desconectarDoBanco();
     }
     
     public String[][] listarClientes(){
@@ -67,7 +71,10 @@ public class Cliente extends Pessoa{
             return resultados;
         }
         catch(SQLException e){
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null,"Erro interno ao listar clientes!");
+        }
+        finally{
+            banco.desconectarDoBanco();
         }
         return null;
     }
@@ -75,6 +82,7 @@ public class Cliente extends Pessoa{
     public void excluirCliente(int codCliente){
         banco.conectarAoBanco();
         banco.modificarTabela("DELETE FROM cliente WHERE codCliente="+codCliente+";");
+        banco.desconectarDoBanco();
     }
     
 }

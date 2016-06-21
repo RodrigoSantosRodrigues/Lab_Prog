@@ -12,6 +12,7 @@ package View;
 import Controller.ConsultaController;
 import Model.Quarto;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 public class ConsultaQuartos extends javax.swing.JFrame {
     ConsultaController consulta=new ConsultaController();
     /**
@@ -69,6 +70,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        frameNumQuarto.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameNumQuarto.setLocation(new java.awt.Point(500, 150));
         frameNumQuarto.setMinimumSize(new java.awt.Dimension(159, 480));
         frameNumQuarto.setResizable(false);
@@ -98,6 +100,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         jLabel14.setText("Frigobar:");
 
         btOk.setText("OK");
+        btOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btOkActionPerformed(evt);
@@ -196,15 +199,18 @@ public class ConsultaQuartos extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
         );
 
+        frameSelecionados.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameSelecionados.setLocation(new java.awt.Point(500, 100));
         frameSelecionados.setMinimumSize(new java.awt.Dimension(150, 170));
         frameSelecionados.setName("Quartos disponíveis"); // NOI18N
-        frameSelecionados.setPreferredSize(new java.awt.Dimension(150, 170));
         frameSelecionados.setResizable(false);
 
         jPanel3.setMinimumSize(new java.awt.Dimension(120, 121));
 
+        comboSelecionados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         btVoltar.setText("Voltar");
+        btVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVoltarActionPerformed(evt);
@@ -248,8 +254,10 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         setLocation(new java.awt.Point(500, 100));
         setResizable(false);
 
+        giratorioNumQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         btNumQuarto.setText("Consultar");
-        btNumQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btNumQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btNumQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNumQuartoActionPerformed(evt);
@@ -261,7 +269,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         jLabel3.setText("Categoria do quarto:");
 
         caixaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Duplo Solteiro", "Casal" }));
-        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        caixaTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setText("Diária:");
 
@@ -272,7 +280,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         });
 
         btConsultarTudo.setText("Consultar selecionados");
-        btConsultarTudo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btConsultarTudo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btConsultarTudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConsultarTudoActionPerformed(evt);
@@ -281,19 +289,19 @@ public class ConsultaQuartos extends javax.swing.JFrame {
 
         jLabel5.setText("Ar-Condicionado:");
 
-        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoAr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel6.setText("Wi-Fi:");
 
-        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoWifi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selecaoFrigobar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel7.setText("Frigobar:");
 
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Error-icon.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -426,11 +434,17 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         else{
             selecionados[4]="false";
         }
-        int num[]=consulta.consultarSelecionados(selecionados);
-        for(int i=0;i<num.length;i++){
-            comboSelecionados.addItem(String.valueOf(num[i]));
+        
+        try{
+            int num[]=consulta.consultarSelecionados(selecionados);
+            for(int i=0;i<num.length;i++){
+                comboSelecionados.addItem(String.valueOf(num[i]));
+            }
+            this.frameSelecionados.setVisible(true);
         }
-        this.frameSelecionados.setVisible(true);
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Não existem quartos com essas descrições!");
+        }  
     }//GEN-LAST:event_btConsultarTudoActionPerformed
 
     private void btNumQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNumQuartoActionPerformed

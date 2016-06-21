@@ -24,8 +24,8 @@ public class GerenciamentoController {
     }
     
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
-            String dataNascimento,String telefone,int codFuncionario,String usuario,String senha,String categoria){
-        gerenciamento.cadastrarFuncionario(nome, cpf, rua, bairro, numero, cidade, estado, dataNascimento, telefone,codFuncionario, usuario, senha, categoria);
+            String dataNascimento,String telefone,String usuario,String senha,String categoria){
+        gerenciamento.cadastrarFuncionario(nome, cpf, rua, bairro, numero, cidade, estado, dataNascimento, telefone, usuario, senha, categoria);
     }
     
     public void excluirFuncionario(int codFuncionario){
