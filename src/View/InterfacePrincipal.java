@@ -12,10 +12,11 @@ package View;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import Controller.ConsultaController;
+import Controller.*;
 public class InterfacePrincipal extends javax.swing.JFrame {
     ConsultaController consultas=new ConsultaController();
     GerenciamentoFrame gerenciamento=new GerenciamentoFrame();
+    GerenciamentoController gerController=new GerenciamentoController();
     /**
      * Creates new form InterfacePrincipal
      */
@@ -37,6 +38,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         painelSair = new javax.swing.JPanel();
         btSim = new javax.swing.JButton();
         btNao = new javax.swing.JButton();
+        frameCheckOut = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        campoCheckOut = new javax.swing.JTextField();
+        btConfirmaCheck = new javax.swing.JButton();
+        btCancelarCheck = new javax.swing.JButton();
         painelPrincipal = new javax.swing.JPanel();
         btConsulta = new javax.swing.JButton();
         btReserva = new javax.swing.JButton();
@@ -46,6 +53,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         btAlternar = new javax.swing.JButton();
+        btCheckOut = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
         menuGeral = new javax.swing.JMenuBar();
         menuConsulta = new javax.swing.JMenu();
         menuConsultar = new javax.swing.JMenuItem();
@@ -112,6 +121,70 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addComponent(painelSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        frameCheckOut.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        frameCheckOut.setTitle("Check-Out");
+        frameCheckOut.setLocation(new java.awt.Point(500, 150));
+        frameCheckOut.setMinimumSize(new java.awt.Dimension(287, 145));
+        frameCheckOut.setResizable(false);
+
+        jLabel23.setText("Número do quarto:");
+
+        btConfirmaCheck.setText("Confirmar check-out");
+        btConfirmaCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btConfirmaCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmaCheckActionPerformed(evt);
+            }
+        });
+
+        btCancelarCheck.setText("Cancelar");
+        btCancelarCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCancelarCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarCheckActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btConfirmaCheck)
+                        .addGap(18, 18, 18)
+                        .addComponent(btCancelarCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btConfirmaCheck)
+                    .addComponent(btCancelarCheck))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameCheckOutLayout = new javax.swing.GroupLayout(frameCheckOut.getContentPane());
+        frameCheckOut.getContentPane().setLayout(frameCheckOutLayout);
+        frameCheckOutLayout.setHorizontalGroup(
+            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        frameCheckOutLayout.setVerticalGroup(
+            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Menu Principal");
         setLocation(new java.awt.Point(10, 10));
@@ -165,9 +238,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         btAlternar.setText("Alternar usuário");
         btAlternar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btAlternar.setMinimumSize(new java.awt.Dimension(109, 41));
+        btAlternar.setPreferredSize(new java.awt.Dimension(109, 41));
         btAlternar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAlternarActionPerformed(evt);
+            }
+        });
+
+        btCheckOut.setText("Check-Out");
+        btCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCheckOutActionPerformed(evt);
             }
         });
 
@@ -176,23 +259,23 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btGerenciamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
-                            .addComponent(jSeparator2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
+                    .addComponent(btCheckOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator3)
+                    .addComponent(btGerenciamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
                         .addComponent(btAlternar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btSair)))
-                .addContainerGap())
+                        .addGap(32, 32, 32)
+                        .addComponent(btSair))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(34, 34, 34))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,20 +284,26 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addComponent(btConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(35, 35, 35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btGerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btAlternar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(6, 6, 6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(btCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btGerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(98, 98, 98))
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btAlternar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btSair))
+                        .addGap(9, 9, 9))))
         );
 
         menuGeral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -280,7 +369,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,6 +438,24 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btAlternarActionPerformed
 
+    private void btCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckOutActionPerformed
+        this.frameCheckOut.setVisible(true);
+    }//GEN-LAST:event_btCheckOutActionPerformed
+
+    private void btConfirmaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmaCheckActionPerformed
+        try{
+            this.gerController.realizarCheckOut(Integer.parseInt(this.campoCheckOut.getText()));
+            this.frameCheckOut.dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Não existe um quarto com esse número!");
+        }
+    }//GEN-LAST:event_btConfirmaCheckActionPerformed
+
+    private void btCancelarCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarCheckActionPerformed
+        this.frameCheckOut.dispose();
+    }//GEN-LAST:event_btCancelarCheckActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,15 +493,23 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlternar;
+    private javax.swing.JButton btCancelarCheck;
+    private javax.swing.JButton btCheckOut;
+    private javax.swing.JButton btConfirmaCheck;
     private javax.swing.JButton btConsulta;
     private javax.swing.JButton btGerenciamento;
     private javax.swing.JButton btNao;
     private javax.swing.JButton btReserva;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSim;
+    private javax.swing.JTextField campoCheckOut;
+    private javax.swing.JFrame frameCheckOut;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuConsulta;
     private javax.swing.JMenuItem menuConsultar;

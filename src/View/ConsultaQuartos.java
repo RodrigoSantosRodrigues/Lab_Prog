@@ -273,12 +273,6 @@ public class ConsultaQuartos extends javax.swing.JFrame {
 
         jLabel4.setText("Diária:");
 
-        campoPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPrecoActionPerformed(evt);
-            }
-        });
-
         btConsultarTudo.setText("Consultar selecionados");
         btConsultarTudo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btConsultarTudo.addActionListener(new java.awt.event.ActionListener() {
@@ -408,10 +402,6 @@ public class ConsultaQuartos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void campoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoPrecoActionPerformed
-
     private void btConsultarTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarTudoActionPerformed
         String selecionados[]=new String[5];
         selecionados[0]=String.valueOf(this.caixaTipo.getSelectedItem());
@@ -449,33 +439,36 @@ public class ConsultaQuartos extends javax.swing.JFrame {
 
     private void btNumQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNumQuartoActionPerformed
         String vetor[]=consulta.consultarQuarto(Integer.parseInt(this.giratorioNumQuarto.getValue().toString()));
-        this.campoNumQuarto.setText(vetor[0]);
-        this.campoCategoria.setText(vetor[1]);
-        this.campoDiaria.setText(vetor[2]);
-        this.campoStatus.setText(vetor[3]);
-        if(this.campoStatus.getText().equals("Desocupado")){
-            this.campoStatus.setBackground(Color.green);
+        try{
+            this.campoNumQuarto.setText(vetor[0]);
+            this.campoCategoria.setText(vetor[1]);
+            this.campoDiaria.setText(vetor[2]);
+            this.campoStatus.setText(vetor[3]);
+            if(this.campoStatus.getText().equals("Desocupado")){
+                this.campoStatus.setBackground(Color.green);
+            }
+            else{
+                this.campoStatus.setBackground(Color.red);
+            }
+            if(vetor[4].equals("true")){
+                this.campoAr.setText("Possui");
+            }else{
+                this.campoAr.setText("Não possui");
+            }
+            if(vetor[5].equals("true")){
+                this.campoWf.setText("Possui");
+            }else{
+                this.campoWf.setText("Não possui");
+            }
+
+            if(vetor[6].equals("true")){
+                this.campoFrigobar.setText("Possui");
+            }else{
+                this.campoFrigobar.setText("Não possui");
+            }
+            frameNumQuarto.setVisible(true);
         }
-        else{
-            this.campoStatus.setBackground(Color.red);
-        }
-        if(vetor[4].equals("true")){
-            this.campoAr.setText("Possui");
-        }else{
-            this.campoAr.setText("Não possui");
-        }
-        if(vetor[5].equals("true")){
-            this.campoWf.setText("Possui");
-        }else{
-            this.campoWf.setText("Não possui");
-        }
-        
-        if(vetor[6].equals("True")){
-            this.campoFrigobar.setText("Possui");
-        }else{
-            this.campoFrigobar.setText("Não possui");
-        }
-        frameNumQuarto.setVisible(true);
+        catch(Exception e){}
     }//GEN-LAST:event_btNumQuartoActionPerformed
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed

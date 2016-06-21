@@ -88,12 +88,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         campoNumExcluir = new javax.swing.JTextField();
         btExcluir = new javax.swing.JButton();
         btCancelarQuarto = new javax.swing.JButton();
-        frameCheckOut = new javax.swing.JFrame();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        campoCheckOut = new javax.swing.JTextField();
-        btConfirmaCheck = new javax.swing.JButton();
-        btCancelarCheck = new javax.swing.JButton();
         frameListarFuncionarios = new javax.swing.JFrame();
         jPanel6 = new javax.swing.JPanel();
         btVoltarFunc = new javax.swing.JButton();
@@ -131,7 +125,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         jPanel12 = new javax.swing.JPanel();
         btListarQuartos = new javax.swing.JButton();
         btExcluirQuarto = new javax.swing.JButton();
-        btCheckOut = new javax.swing.JButton();
         btCadastroQuartos = new javax.swing.JButton();
         btVoltarGerQuarto = new javax.swing.JButton();
         painelFundo = new javax.swing.JPanel();
@@ -147,7 +140,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameCadastroFunc.setTitle("Cadastro de funcionários");
         frameCadastroFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         frameCadastroFunc.setLocation(new java.awt.Point(500, 250));
-        frameCadastroFunc.setMinimumSize(new java.awt.Dimension(480, 372));
+        frameCadastroFunc.setMinimumSize(new java.awt.Dimension(530, 455));
         frameCadastroFunc.setResizable(false);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(480, 450));
@@ -592,70 +585,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        frameCheckOut.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        frameCheckOut.setTitle("Check-Out");
-        frameCheckOut.setLocation(new java.awt.Point(500, 150));
-        frameCheckOut.setMinimumSize(new java.awt.Dimension(287, 145));
-        frameCheckOut.setResizable(false);
-
-        jLabel23.setText("Número do quarto:");
-
-        btConfirmaCheck.setText("Confirmar check-out");
-        btConfirmaCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btConfirmaCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btConfirmaCheckActionPerformed(evt);
-            }
-        });
-
-        btCancelarCheck.setText("Cancelar");
-        btCancelarCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btCancelarCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarCheckActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel23)
-                    .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btConfirmaCheck)
-                        .addGap(18, 18, 18)
-                        .addComponent(btCancelarCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btConfirmaCheck)
-                    .addComponent(btCancelarCheck))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout frameCheckOutLayout = new javax.swing.GroupLayout(frameCheckOut.getContentPane());
-        frameCheckOut.getContentPane().setLayout(frameCheckOutLayout);
-        frameCheckOutLayout.setHorizontalGroup(
-            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        frameCheckOutLayout.setVerticalGroup(
-            frameCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
         frameListarFuncionarios.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         frameListarFuncionarios.setTitle("Lista de funcionários");
         frameListarFuncionarios.setLocation(new java.awt.Point(500, 150));
@@ -1097,14 +1026,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             }
         });
 
-        btCheckOut.setText("Check-Out");
-        btCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCheckOutActionPerformed(evt);
-            }
-        });
-
         btCadastroQuartos.setText("Cadastrar quarto");
         btCadastroQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btCadastroQuartos.addActionListener(new java.awt.event.ActionListener() {
@@ -1126,18 +1047,16 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btListarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btExcluirQuarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btCheckOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(btVoltarGerQuarto)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btCadastroQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btListarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExcluirQuarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btVoltarGerQuarto)
+                .addGap(23, 23, 23))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1148,8 +1067,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                 .addComponent(btListarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btExcluirQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btVoltarGerQuarto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1163,7 +1080,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         );
         frameGerenciarQuartosLayout.setVerticalGroup(
             frameGerenciarQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1385,24 +1302,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         this.frameExcluirQuarto.dispose();
     }//GEN-LAST:event_btCancelarQuartoActionPerformed
 
-    private void btCancelarCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarCheckActionPerformed
-        this.frameCheckOut.dispose();
-    }//GEN-LAST:event_btCancelarCheckActionPerformed
-
-    private void btConfirmaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmaCheckActionPerformed
-        try{
-            this.gerenciamento.realizarCheckOut(Integer.parseInt(this.campoCheckOut.getText()));
-            this.frameCheckOut.dispose();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Não existe um quarto com esse número!");
-        }
-    }//GEN-LAST:event_btConfirmaCheckActionPerformed
-
-    private void btCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckOutActionPerformed
-        this.frameCheckOut.setVisible(true);
-    }//GEN-LAST:event_btCheckOutActionPerformed
-
     private void btVoltarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarFuncActionPerformed
         while(tbListarFuncionarios.getModel().getRowCount()>0){
             ((DefaultTableModel)tbListarFuncionarios.getModel()).removeRow(0);
@@ -1535,12 +1434,9 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btCadastrarQuarto;
     private javax.swing.JButton btCadastroFunc;
     private javax.swing.JButton btCadastroQuartos;
-    private javax.swing.JButton btCancelarCheck;
     private javax.swing.JButton btCancelarCliente;
     private javax.swing.JButton btCancelarFunc;
     private javax.swing.JButton btCancelarQuarto;
-    private javax.swing.JButton btCheckOut;
-    private javax.swing.JButton btConfirmaCheck;
     private javax.swing.JButton btEmitir;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btExcluirCli;
@@ -1566,7 +1462,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btVoltarGerFunc;
     private javax.swing.JButton btVoltarGerQuarto;
     private javax.swing.JTextField campoBairro;
-    private javax.swing.JTextField campoCheckOut;
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoCpf;
     private javax.swing.JTextField campoData;
@@ -1584,7 +1479,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JFrame frameCadastroFunc;
     private javax.swing.JFrame frameCadastroQuarto;
-    private javax.swing.JFrame frameCheckOut;
     private javax.swing.JFrame frameExcluirCliente;
     private javax.swing.JFrame frameExcluirFuncionario;
     private javax.swing.JFrame frameExcluirQuarto;
@@ -1610,7 +1504,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
@@ -1627,7 +1520,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
