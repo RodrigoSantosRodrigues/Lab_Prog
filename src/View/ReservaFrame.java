@@ -583,6 +583,7 @@ public class ReservaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.caixaNumHospedes.setEnabled(true);
         this.gerController.verificarPrazoReserva();
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
@@ -638,6 +639,13 @@ public class ReservaFrame extends javax.swing.JFrame {
                     break;
                 }
             }
+            if(this.campoTipo.getText().equals("Solteiro")){
+                this.caixaNumHospedes.setSelectedItem(String.valueOf(1));
+                this.caixaNumHospedes.setEnabled(false);
+            }
+            else{
+                this.caixaNumHospedes.setEnabled(true);
+            }
             this.frameSelecionados.setVisible(true);
         }
         catch(Exception e){
@@ -664,6 +672,7 @@ public class ReservaFrame extends javax.swing.JFrame {
                 this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             }
             this.jLabel4.setText("Nome completo do(a) responsável:");
+            this.caixaNumHospedes.setEnabled(true);
             this.dispose();
         }
         catch(Exception e){
@@ -695,6 +704,7 @@ public class ReservaFrame extends javax.swing.JFrame {
                 Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
             this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             this.mudarCamposCadastro();
+            this.caixaNumHospedes.setEnabled(true);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Campos inválidos ou preenchidos incorretamente!");
@@ -706,6 +716,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         this.comboSelecionados.removeAllItems();
         this.frameSelecionados.dispose();
         this.frameConsulta.dispose();
+        
     }//GEN-LAST:event_btSelecionaQuartoActionPerformed
 
     private void caixaNumHospedesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_caixaNumHospedesItemStateChanged

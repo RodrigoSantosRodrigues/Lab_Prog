@@ -107,7 +107,7 @@ public class Reserva implements Relatorio{
     
     public void excluirReserva(int codReserva){
         banco.conectarAoBanco();
-        banco.modificarTabela("DELETE FROM reserva WHERE codReserva="+codReserva+";");
+        banco.modificarTabela("DELETE FROM reserva WHERE codigo="+codReserva+";");
         banco.desconectarDoBanco();
     }
     
