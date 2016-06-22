@@ -137,6 +137,14 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         return quarto.listarQuartos();
     }
     
+    public String[] pesquisarAlterarQuarto(int numQuarto){
+        return quarto.pesquisarAlterarQuarto(numQuarto);
+    }
+    
+    public void alterarQuarto(int numQuarto,String tipo,double valorDiario,boolean arCondicionado,boolean wifi,boolean frigobar){
+        this.quarto.alterarQuarto(numQuarto, tipo, valorDiario, arCondicionado, wifi, frigobar);
+    }
+    
     public void excluirQuarto(int numero){
         quarto.excluirQuarto(numero);
     }
@@ -151,6 +159,14 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     
     public String[][] exibirSelecionadosReserva(String selecionados[]){
         return reserva.exibirSelecionadosReserva(selecionados);
+    }
+    
+    public String[][] listarReservas(){
+        return reserva.listarReservas();
+    }
+    
+    public void excluirReserva(int codReserva){
+        this.reserva.excluirReserva(codReserva);
     }
     
     public void cadastrarFuncionario(String nome,String cpf,String rua,String bairro,int numero,String cidade, String estado,
@@ -176,6 +192,43 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         finally{
             banco.desconectarDoBanco();
         }
+    }
+    
+    public String[] pesquisarAlterarFuncionario(int codFuncionario){
+        String info[]=new String[12];
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM funcionario WHERE codFuncionario="+codFuncionario+";");
+        try{
+            rst.next();
+            info[0]=rst.getString("nome");
+            info[1]=rst.getString("cpf");
+            info[2]=rst.getString("rua");
+            info[3]=String.valueOf(rst.getInt("numero"));
+            info[4]=rst.getString("bairro");
+            info[5]=rst.getString("cidade");
+            info[6]=rst.getString("estado");
+            info[7]=rst.getString("dataNascimento");
+            info[8]=rst.getString("telefone");
+            info[9]=rst.getString("categoria");
+            info[10]=rst.getString("usuario");
+            info[11]=rst.getString("senha");
+            return info;
+        }
+        catch(SQLException e){}
+        finally{
+            banco.desconectarDoBanco();
+        }
+        return null;
+    }
+    
+    public void alterarFuncionario(int codFuncionario,String nome,String cpf,String rua,int numero,String bairro,String cidade,String estado,
+        String dataNascimento,String telefone,String categoria,String usuario,String senha,String usuarioAntigo){
+        banco.conectarAoBanco();
+        banco.modificarTabela("UPDATE funcionario SET nome='"+nome+"',cpf='"+cpf+"',rua='"+rua+"',numero="+numero+",bairro='"+bairro+"',cidade='"
+        +cidade+"',estado='"+estado+"',dataNascimento='"+dataNascimento+"',telefone='"+telefone+"',categoria='"+categoria+"',usuario='"
+                +usuario+"',senha='"+senha+"' WHERE codFuncionario="+codFuncionario+";");
+        banco.gerenciarUsuarioNoBanco("UPDATE mysql.user SET user='"+usuario+"',password='"+senha+"' WHERE user='"+usuarioAntigo+"';");
+        banco.desconectarDoBanco();
     }
     
     public String[][] listarFuncionarios(){
@@ -239,6 +292,14 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         this.quarto.reservarQuarto(numero);
     }
     
+    public void registrarReserva(String nomeCliente,int numQuarto,String status,double valorTotal){
+        this.reserva.registrarReserva(nomeCliente,numQuarto, status, valorTotal);
+    }
+    
+    public void mudarStatusReserva(int numero){
+        this.reserva.mudarStatusReserva(numero);
+    }
+    
     public void cadastrarClienteResp(String nome,String cpfrg,String rua,String bairro,int numero,String cidade,String estado,String dataNasc,String telefone,int numQuarto){
         this.cliente.cadastrarClienteResp(nome, cpfrg, rua, bairro, numero, cidade, estado, dataNasc, telefone,numQuarto);
     }
@@ -253,5 +314,14 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     
     public void excluirCliente(int codCliente){
         this.cliente.excluirCliente(codCliente);
+    }
+    
+    public String[] pesquisarAlterarCliente(int codCliente){
+        return this.cliente.pesquisarAlterarCliente(codCliente);
+    }
+    
+    public void alterarCliente(int codCliente,String nome,String cpf,String rua,int numero,String bairro,String cidade,String estado,
+        String dataNascimento,String telefone){
+        this.cliente.alterarCliente(codCliente, nome, cpf, rua, numero, bairro, cidade, estado, dataNascimento, telefone);
     }
 }

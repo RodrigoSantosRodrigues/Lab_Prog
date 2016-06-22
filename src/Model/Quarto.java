@@ -260,4 +260,31 @@ public class Quarto {
         }
         return null;
     }
+    
+    public String[] pesquisarAlterarQuarto(int numQuarto){
+        String info[]=new String[5];
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT tipo,valorDiario,arCondicionado,wifi,frigobar FROM quarto WHERE numero="+numQuarto+" AND status='Desocupado';");
+        try{
+            rst.next();
+            info[0]=rst.getString("tipo");
+            info[1]=String.valueOf(rst.getDouble("valorDiario"));
+            info[2]=String.valueOf(rst.getBoolean("arCondicionado"));
+            info[3]=String.valueOf(rst.getBoolean("wifi"));
+            info[4]=String.valueOf(rst.getBoolean("frigobar"));
+            return info;
+        }
+        catch(SQLException e){}
+        finally{
+            banco.desconectarDoBanco();
+        }
+        return null;
+    }
+    
+    public void alterarQuarto(int numQuarto,String tipo,double valorDiario,boolean arCondicionado,boolean wifi,boolean frigobar){
+        banco.conectarAoBanco();
+        banco.modificarTabela("UPDATE quarto SET tipo='"+tipo+"',valorDiario="+valorDiario+",arCondicionado="+arCondicionado+",wifi="
+                +wifi+",frigobar="+frigobar+" WHERE numero="+numQuarto+";");
+        banco.desconectarDoBanco();
+    }
 }

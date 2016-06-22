@@ -17,11 +17,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     ConsultaController consultas=new ConsultaController();
     GerenciamentoFrame gerenciamento=new GerenciamentoFrame();
     GerenciamentoController gerController=new GerenciamentoController();
+    ReservaController reserva=new ReservaController();
     /**
      * Creates new form InterfacePrincipal
      */
     public InterfacePrincipal() {
         setExtendedState(MAXIMIZED_BOTH);
+        gerController.verificarPrazoReserva();
         initComponents();
     }
 
@@ -380,6 +382,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.gerController.verificarPrazoReserva();
         msgSair.setVisible(true);
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -432,6 +435,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void btAlternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlternarActionPerformed
+        this.gerController.verificarPrazoReserva();
         consultas.limparUsuarioAtual();
         InterfaceLogin alternar=new InterfaceLogin();
         alternar.setVisible(true);
@@ -445,6 +449,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void btConfirmaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmaCheckActionPerformed
         try{
             this.gerController.realizarCheckOut(Integer.parseInt(this.campoCheckOut.getText()));
+            this.reserva.mudarStatusReserva(Integer.parseInt(this.campoCheckOut.getText()));
             this.frameCheckOut.dispose();
         }
         catch(Exception e){
@@ -453,6 +458,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btConfirmaCheckActionPerformed
 
     private void btCancelarCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarCheckActionPerformed
+        gerController.verificarPrazoReserva();
         this.frameCheckOut.dispose();
     }//GEN-LAST:event_btCancelarCheckActionPerformed
 

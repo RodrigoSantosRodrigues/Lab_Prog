@@ -9,12 +9,12 @@
  * @author Aluno
  */
 package View;
-import Controller.ConsultaController;
-import Model.Quarto;
+import Controller.*;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 public class ConsultaQuartos extends javax.swing.JFrame {
     ConsultaController consulta=new ConsultaController();
+    GerenciamentoController gerController=new GerenciamentoController();
     /**
      * Creates new form ConsultaQuartos
      */
@@ -398,6 +398,7 @@ public class ConsultaQuartos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.gerController.verificarPrazoReserva();
         this.frameSelecionados.dispose();
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed

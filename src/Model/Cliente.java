@@ -36,6 +36,38 @@ public class Cliente extends Pessoa{
         banco.desconectarDoBanco();
     }
     
+    public String[] pesquisarAlterarCliente(int codCliente){
+        String info[]=new String[9];
+        banco.conectarAoBanco();
+        rst=banco.pesquisarNoBanco("SELECT * FROM cliente WHERE codCliente="+codCliente+";");
+        try{
+            rst.next();
+            info[0]=rst.getString("nome");
+            info[1]=rst.getString("cpfrg");
+            info[2]=rst.getString("rua");
+            info[3]=String.valueOf(rst.getInt("numero"));
+            info[4]=rst.getString("bairro");
+            info[5]=rst.getString("cidade");
+            info[6]=rst.getString("estado");
+            info[7]=rst.getString("dataNascimento");
+            info[8]=rst.getString("telefone");
+            return info;
+        }
+        catch(SQLException e){}
+        finally{
+            banco.desconectarDoBanco();
+        }
+        return null;
+    }
+    
+    public void alterarCliente(int codCliente,String nome,String cpf,String rua,int numero,String bairro,String cidade,String estado,
+        String dataNascimento,String telefone){
+        banco.conectarAoBanco();
+        banco.modificarTabela("UPDATE cliente SET nome='"+nome+"',cpfrg='"+cpf+"',rua='"+rua+"',numero="+numero+",bairro='"+bairro+"',cidade='"
+        +cidade+"',estado='"+estado+"',dataNascimento='"+dataNascimento+"',telefone='"+telefone+"' WHERE codCliente="+codCliente+";");
+        banco.desconectarDoBanco();
+    }
+    
     public String[][] listarClientes(){
         String resultados[][];
         int cont=0;

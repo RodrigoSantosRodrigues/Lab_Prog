@@ -51,4 +51,20 @@ public class ConsultaController {
     public String[][] listarClientes(){
         return funcionario.listarClientes();
     }
+    
+    public String[][] listarReservas(){
+        return funcionario.listarReservas();
+    }
+    
+    public String[] pesquisarAlterarQuarto(int numQuarto){
+        return funcionario.pesquisarAlterarQuarto(numQuarto);
+    }
+    
+    public String[] pesquisarAlterarFuncionario(int codFuncionario){
+        return funcionario.pesquisarAlterarFuncionario(codFuncionario);
+    }
+    
+    public String[] pesquisarAlterarCliente(int codCliente){
+        return funcionario.pesquisarAlterarCliente(codCliente);
+    }
 }

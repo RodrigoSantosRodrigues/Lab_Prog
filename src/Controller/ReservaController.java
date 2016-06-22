@@ -23,4 +23,16 @@ public class ReservaController {
     public void reservarQuarto(int numero){
         reserva.reservarQuarto(numero);
     }
+    
+    public void registrarReserva(String nomeCliente,int numQuarto,String status,double valorTotal){
+        reserva.registrarReserva(nomeCliente,numQuarto, status, valorTotal);
+    }
+    
+    public void mudarStatusReserva(int num){
+        reserva.mudarStatusReserva(num);
+    }
+    
+    public void excluirReserva(int codReserva){
+        reserva.excluirReserva(codReserva);
+    }
 }

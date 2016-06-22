@@ -17,6 +17,7 @@ public class ReservaFrame extends javax.swing.JFrame {
      */
     ReservaController reserva=new ReservaController();
     ConsultaController consulta=new ConsultaController();
+    GerenciamentoController gerController=new GerenciamentoController();
     public ReservaFrame(){
         setExtendedState(MAXIMIZED_BOTH);
         initComponents();
@@ -582,6 +583,7 @@ public class ReservaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.gerController.verificarPrazoReserva();
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -644,6 +646,7 @@ public class ReservaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSair1ActionPerformed
+        this.gerController.verificarPrazoReserva();
         frameConsulta.dispose();
     }//GEN-LAST:event_btSair1ActionPerformed
 
@@ -652,11 +655,13 @@ public class ReservaFrame extends javax.swing.JFrame {
             if(String.valueOf(this.caixaNumHospedes.getSelectedItem()).equals("2")){
                 this.reserva.cadastrarClienteNormal(this.campoNome.getText(), this.campoCpfRg.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
                 this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+                this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             }
             else{
                 this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
                 Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
                 this.reserva.reservarQuarto(Integer.parseInt(this.campoNumQuarto.getText()));
+                this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             }
             this.jLabel4.setText("Nome completo do(a) responsável:");
             this.dispose();
@@ -688,6 +693,7 @@ public class ReservaFrame extends javax.swing.JFrame {
         try{
             this.reserva.cadastrarClienteResp(this.campoNome.getText(), this.campoCpfRg.getText(), this.campoRua.getText(), this.campoBairro.getText(),
                 Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(), this.campoData.getText(), this.campoTelefone.getText(),Integer.parseInt(this.campoNumQuarto.getText()));
+            this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             this.mudarCamposCadastro();
         }
         catch(Exception e){
