@@ -430,9 +430,6 @@ public class ReservaFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
                                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(painelFundoLayout.createSequentialGroup()
-                                        .addComponent(campoNumero)
-                                        .addGap(317, 317, 317))
-                                    .addGroup(painelFundoLayout.createSequentialGroup()
                                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(541, 541, 541))
                                     .addGroup(painelFundoLayout.createSequentialGroup()
@@ -473,7 +470,10 @@ public class ReservaFrame extends javax.swing.JFrame {
                                             .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(painelFundoLayout.createSequentialGroup()
                                                 .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(painelFundoLayout.createSequentialGroup()
+                                        .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(painelFundoLayout.createSequentialGroup()
                                         .addGap(31, 31, 31)
@@ -583,6 +583,7 @@ public class ReservaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.limparCamposCliente();
         this.caixaNumHospedes.setEnabled(true);
         this.gerController.verificarPrazoReserva();
         this.dispose();
@@ -673,6 +674,7 @@ public class ReservaFrame extends javax.swing.JFrame {
             }
             this.jLabel4.setText("Nome completo do(a) responsável:");
             this.caixaNumHospedes.setEnabled(true);
+            this.limparCamposCliente();
             this.dispose();
         }
         catch(Exception e){
@@ -705,20 +707,41 @@ public class ReservaFrame extends javax.swing.JFrame {
             this.reserva.registrarReserva(this.campoNome.getText(),Integer.parseInt(this.campoNumQuarto.getText()), "Reserva ativa", Double.parseDouble(this.campoPreco.getText()));
             this.mudarCamposCadastro();
             this.caixaNumHospedes.setEnabled(true);
+            this.limparCamposCliente();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Campos inválidos ou preenchidos incorretamente!");
         }
     }//GEN-LAST:event_btResponsavelActionPerformed
-
+    
+    private void limparCamposConsulta(){
+        this.campoPreco1.setText("");
+        this.selecaoAr.setSelected(false);
+        this.selecaoWifi.setSelected(false);
+        this.selecaoFrigobar.setSelected(false);
+    }
+    
+    private void limparCamposCliente(){
+        this.campoNome.setText("");
+        this.campoCpfRg.setText("");
+        this.campoNumero.setText("");
+        this.campoTelefone.setText("");
+        this.campoRua.setText("");
+        this.campoBairro.setText("");
+        this.campoCidade.setText("");
+        this.campoEstado.setText("");
+        this.campoData.setText("");
+    }
+    
     private void btSelecionaQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionaQuartoActionPerformed
         this.setVisible(true);
+        this.limparCamposConsulta();
         this.comboSelecionados.removeAllItems();
         this.frameSelecionados.dispose();
         this.frameConsulta.dispose();
         
     }//GEN-LAST:event_btSelecionaQuartoActionPerformed
-
+    
     private void caixaNumHospedesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_caixaNumHospedesItemStateChanged
         if(String.valueOf(evt.getItem()).equals("1")){
             this.btResponsavel.setEnabled(false);

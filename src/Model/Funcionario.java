@@ -7,6 +7,18 @@ package Model;
 import java.sql.*;
 import Persistencia.Banco;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import java.util.HashMap;
+import com.mysql.jdbc.Connection;
+import java.sql.*;
 /**
  *
  * @author Sandra
@@ -79,7 +91,46 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
     }
     
     @Override
-    public void gerarRelatorio(int tipo){ 
+    public JasperPrint gerarRelatorio(int tipo)throws SQLException,JRException{ 
+        banco.conectarAoBanco();
+        Statement st;
+        if(tipo==1){
+            st=banco.getConnection().createStatement();
+            st.execute("SELECT * FROM funcionario;");
+            JRResultSetDataSource result=new JRResultSetDataSource(st.getResultSet());
+            JasperPrint jpPrint=JasperFillManager.fillReport("src\\iReports\\RelatorioFuncionario.jasper",new HashMap(),result);
+            return jpPrint;
+        }
+        else if(tipo==2){
+            st=banco.getConnection().createStatement();
+            st.execute("SELECT * FROM cliente;");
+            JRResultSetDataSource result=new JRResultSetDataSource(st.getResultSet());
+            JasperPrint jpPrint=JasperFillManager.fillReport("src\\iReports\\RelatorioCliente.jasper",new HashMap(),result);
+            return jpPrint;
+        }
+        else if(tipo==2){
+            st=banco.getConnection().createStatement();
+            st.execute("SELECT * FROM cliente;");
+            JRResultSetDataSource result=new JRResultSetDataSource(st.getResultSet());
+            JasperPrint jpPrint=JasperFillManager.fillReport("src\\iReports\\RelatorioCliente.jasper",new HashMap(),result);
+            return jpPrint;
+        }
+        else if(tipo==3){
+            st=banco.getConnection().createStatement();
+            st.execute("SELECT * FROM quarto;");
+            JRResultSetDataSource result=new JRResultSetDataSource(st.getResultSet());
+            JasperPrint jpPrint=JasperFillManager.fillReport("src\\iReports\\RelatorioQuarto.jasper",new HashMap(),result);
+            return jpPrint;
+        }
+        else if(tipo==4){
+            st=banco.getConnection().createStatement();
+            st.execute("SELECT * FROM reserva;");
+            JRResultSetDataSource result=new JRResultSetDataSource(st.getResultSet());
+            JasperPrint jpPrint=JasperFillManager.fillReport("src\\iReports\\RelatorioReserva.jasper",new HashMap(),result);
+            return jpPrint;
+        }
+        
+        return null;
     }
     
     @Override
@@ -120,9 +171,6 @@ public class Funcionario extends Pessoa implements Login,Relatorio{
         banco.conectarAoBanco();
         banco.modificarTabela("DELETE FROM funcionarioatual;");
         banco.desconectarDoBanco();
-    }
-    
-    public void exibirRelatorios(String tipoRelatorio){       
     }
     
     public void cadastrarQuarto(int numero,String tipo,String status,double valorDiario,int ar,int wifi,int frigobar){

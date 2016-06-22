@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
-
+package Controller;
+import Model.Funcionario;
 import java.sql.SQLException;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
-
+import com.mysql.jdbc.Connection;
 /**
  *
- * @author Sandra
+ * @author Pedro
  */
-public interface Relatorio {
-    /**Gera relatorios de todos tipos
-     *@param tipo declara o tipo de relatorio a ser criado
-     */
-    public JasperPrint gerarRelatorio(int tipo)throws SQLException,JRException;
+public class RelatorioController {
+    Funcionario relatorio=new Funcionario();
+    
+    public JasperPrint relatorio(int tipo)throws SQLException,JRException{
+        return relatorio.gerarRelatorio(tipo);
+    }
 }

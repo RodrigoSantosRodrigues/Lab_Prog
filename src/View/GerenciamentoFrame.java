@@ -12,10 +12,14 @@ package View;
 import Controller.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.view.JasperViewer;
+
 public class GerenciamentoFrame extends javax.swing.JFrame{
     GerenciamentoController gerenciamento=new GerenciamentoController();
     ConsultaController consulta=new ConsultaController();
     ReservaController reserva=new ReservaController();
+    RelatorioController relatorio=new RelatorioController();
+    JasperViewer exibir;
     /**
      * Creates new form GerenciamentoFrame
      */
@@ -218,8 +222,14 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         jLabel54 = new javax.swing.JLabel();
         btAlterarCli = new javax.swing.JButton();
         btCancelarAlCli = new javax.swing.JButton();
+        frameRelatorios = new javax.swing.JFrame();
+        jPanel15 = new javax.swing.JPanel();
+        btRelFunc = new javax.swing.JButton();
+        btRelCli = new javax.swing.JButton();
+        btRelQua = new javax.swing.JButton();
+        btRelRes = new javax.swing.JButton();
+        btVoltarRel = new javax.swing.JButton();
         painelFundo = new javax.swing.JPanel();
-        btEmitir = new javax.swing.JButton();
         btExibirRelatorios = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btGerenciarClientes = new javax.swing.JButton();
@@ -951,7 +961,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameGerenciarClientes.setTitle("Gerenciamento de clientes");
         frameGerenciarClientes.setLocation(new java.awt.Point(500, 150));
         frameGerenciarClientes.setMinimumSize(new java.awt.Dimension(228, 210));
-        frameGerenciarClientes.setPreferredSize(new java.awt.Dimension(228, 210));
         frameGerenciarClientes.setResizable(false);
 
         btExcluirCliente.setText("Excluir cliente");
@@ -1036,7 +1045,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameGerenciarFuncionarios.setTitle("Gerenciamento de funcionários");
         frameGerenciarFuncionarios.setLocation(new java.awt.Point(500, 150));
         frameGerenciarFuncionarios.setMinimumSize(new java.awt.Dimension(225, 255));
-        frameGerenciarFuncionarios.setPreferredSize(new java.awt.Dimension(157, 255));
         frameGerenciarFuncionarios.setResizable(false);
 
         btExcluirFuncionario.setText("Excluir funcionário");
@@ -1134,7 +1142,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameGerenciarQuartos.setTitle("Gerenciamento de quartos");
         frameGerenciarQuartos.setLocation(new java.awt.Point(500, 150));
         frameGerenciarQuartos.setMinimumSize(new java.awt.Dimension(208, 240));
-        frameGerenciarQuartos.setPreferredSize(new java.awt.Dimension(208, 240));
         frameGerenciarQuartos.setResizable(false);
 
         btListarQuartos.setText("Listar quartos");
@@ -1409,7 +1416,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameAlterarQuarto.setTitle("Alterar quarto");
         frameAlterarQuarto.setLocation(new java.awt.Point(500, 250));
         frameAlterarQuarto.setMinimumSize(new java.awt.Dimension(300, 430));
-        frameAlterarQuarto.setPreferredSize(new java.awt.Dimension(300, 430));
         frameAlterarQuarto.setResizable(false);
 
         jLabel23.setText("Número do quarto:");
@@ -1547,7 +1553,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameAlterarFunc.setTitle("Alterar funcionário");
         frameAlterarFunc.setLocation(new java.awt.Point(500, 150));
         frameAlterarFunc.setMinimumSize(new java.awt.Dimension(347, 525));
-        frameAlterarFunc.setPreferredSize(new java.awt.Dimension(347, 525));
         frameAlterarFunc.setResizable(false);
 
         jLabel31.setText("Data de nascimento:");
@@ -1748,7 +1753,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         frameAlterarCli.setTitle("Alterar cliente");
         frameAlterarCli.setLocation(new java.awt.Point(500, 150));
         frameAlterarCli.setMinimumSize(new java.awt.Dimension(347, 480));
-        frameAlterarCli.setPreferredSize(new java.awt.Dimension(347, 480));
         frameAlterarCli.setResizable(false);
 
         jLabel44.setText("Data de nascimento:");
@@ -1913,19 +1917,111 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        frameRelatorios.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        frameRelatorios.setTitle("Gerar relatórios");
+        frameRelatorios.setLocation(new java.awt.Point(500, 150));
+        frameRelatorios.setMinimumSize(new java.awt.Dimension(270, 230));
+        frameRelatorios.setResizable(false);
+
+        btRelFunc.setText("Relátorio de funcionários");
+        btRelFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRelFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRelFuncActionPerformed(evt);
+            }
+        });
+
+        btRelCli.setText("Relátorio de clientes");
+        btRelCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRelCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRelCliActionPerformed(evt);
+            }
+        });
+
+        btRelQua.setText("Relátorio de quartos");
+        btRelQua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRelQua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRelQuaActionPerformed(evt);
+            }
+        });
+
+        btRelRes.setText("Relátorio de reservas");
+        btRelRes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btRelRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRelResActionPerformed(evt);
+            }
+        });
+
+        btVoltarRel.setText("Voltar");
+        btVoltarRel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btVoltarRel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarRelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btRelFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btRelQua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btRelRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btRelCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btVoltarRel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btRelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btRelCli, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btRelQua, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btRelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltarRel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameRelatoriosLayout = new javax.swing.GroupLayout(frameRelatorios.getContentPane());
+        frameRelatorios.getContentPane().setLayout(frameRelatoriosLayout);
+        frameRelatoriosLayout.setHorizontalGroup(
+            frameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameRelatoriosLayout.setVerticalGroup(
+            frameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gerenciamento");
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
 
-        btEmitir.setText("Emitir relatórios");
-        btEmitir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btExibirRelatorios.setText("Exibir relatórios");
+        btExibirRelatorios.setText("Gerar relatórios");
         btExibirRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btExibirRelatorios.setMaximumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setMinimumSize(new java.awt.Dimension(113, 23));
         btExibirRelatorios.setPreferredSize(new java.awt.Dimension(113, 23));
+        btExibirRelatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExibirRelatoriosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconmonstr-gear-10-icon-256.png"))); // NOI18N
 
@@ -1984,7 +2080,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btGerReservas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btEmitir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btGerenciarQuartos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btExibirRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btGerenciarClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1996,13 +2091,11 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             .addGroup(painelFundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(btExibirRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btEmitir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btGerenciarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(btGerenciarFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btGerenciarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2046,14 +2139,15 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
                     Integer.parseInt(this.campoNumero.getText()), this.campoCidade.getText(), this.campoEstado.getText(),
                     this.campoData.getText(),this.campoTelefone.getText(),this.campoUsuario.getText(), this.campoSenha.getText(), 
                     String.valueOf(this.comboCategoria.getSelectedItem()));
+            this.limparCamposCadastroFunc();
             frameCadastroFunc.dispose();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Campos inválidos ou preenchidos incorretamente!");
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+    
+    private void limparCamposCadastroFunc(){
         this.campoNome.setText("");
         this.campoRua.setText("");
         this.campoBairro.setText("");
@@ -2064,6 +2158,10 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         this.campoTelefone.setText("");
         this.campoUsuario.setText("");
         this.campoSenha.setText("");
+    }
+    
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        this.limparCamposCadastroFunc();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSairQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairQuartoActionPerformed
@@ -2102,6 +2200,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     }//GEN-LAST:event_btCadastrarQuartoActionPerformed
 
     private void btSairCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairCadastroActionPerformed
+        this.limparCamposCadastroFunc();
         frameCadastroFunc.dispose();
     }//GEN-LAST:event_btSairCadastroActionPerformed
 
@@ -2163,6 +2262,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private void btExcluirFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirFuncActionPerformed
         try{
             this.gerenciamento.excluirFuncionario(Integer.parseInt(this.campoNumExcluirFunc.getText()));
+            this.campoNumExcluirFunc.setText("");
             this.frameExcluirFuncionario.dispose();
         }
         catch(Exception e){
@@ -2171,6 +2271,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     }//GEN-LAST:event_btExcluirFuncActionPerformed
 
     private void btCancelarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarFuncActionPerformed
+        this.campoNumExcluirFunc.setText("");
         this.frameExcluirFuncionario.dispose();
     }//GEN-LAST:event_btCancelarFuncActionPerformed
 
@@ -2194,6 +2295,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private void btExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirCliActionPerformed
         try{
             this.gerenciamento.excluirCliente(Integer.parseInt(this.campoNumExcluirCliente.getText()));
+            this.campoNumExcluirCliente.setText("");
             this.frameExcluirCliente.dispose();
         }
         catch(Exception e){
@@ -2202,6 +2304,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     }//GEN-LAST:event_btExcluirCliActionPerformed
 
     private void btCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarClienteActionPerformed
+        this.campoNumExcluirCliente.setText("");
         this.frameExcluirCliente.dispose();
     }//GEN-LAST:event_btCancelarClienteActionPerformed
 
@@ -2388,7 +2491,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         this.limparSelecoesFunc();
         this.frameAlterarFunc.dispose();
     }//GEN-LAST:event_btCancelarAltFuncActionPerformed
-
+    
     private void btAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarFuncionarioActionPerformed
         String usuarioAntigo=this.campoNomeAlt.getText();
         try{
@@ -2455,7 +2558,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null,"Não existe um cliente com esse código!");
         }
     }//GEN-LAST:event_btSelecionarClienteActionPerformed
-
+    
     private void btAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarCliActionPerformed
         try{
             if(this.campoRuaAltCli.getText().equals("")){
@@ -2482,6 +2585,58 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
         this.limparSelecoesCliente();
         this.frameAlterarCli.dispose();
     }//GEN-LAST:event_btCancelarAlCliActionPerformed
+
+    private void btExibirRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExibirRelatoriosActionPerformed
+        this.frameRelatorios.setVisible(true);
+    }//GEN-LAST:event_btExibirRelatoriosActionPerformed
+
+    private void btRelFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelFuncActionPerformed
+        try{
+            exibir= new JasperViewer(relatorio.relatorio(1),false);
+            exibir.setVisible(true);
+            exibir.toFront();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório!");
+        }
+    }//GEN-LAST:event_btRelFuncActionPerformed
+
+    private void btVoltarRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarRelActionPerformed
+        this.frameRelatorios.dispose();
+    }//GEN-LAST:event_btVoltarRelActionPerformed
+
+    private void btRelCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelCliActionPerformed
+        try{
+            exibir= new JasperViewer(relatorio.relatorio(2),false);
+            exibir.setVisible(true);
+            exibir.toFront();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório!");
+        }
+    }//GEN-LAST:event_btRelCliActionPerformed
+
+    private void btRelQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelQuaActionPerformed
+        try{
+            exibir= new JasperViewer(relatorio.relatorio(3),false);
+            exibir.setVisible(true);
+            exibir.toFront();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório!");
+        }
+    }//GEN-LAST:event_btRelQuaActionPerformed
+
+    private void btRelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelResActionPerformed
+        try{
+            exibir= new JasperViewer(relatorio.relatorio(4),false);
+            exibir.setVisible(true);
+            exibir.toFront();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório!");
+        }
+    }//GEN-LAST:event_btRelResActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2536,7 +2691,6 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btCancelarFunc;
     private javax.swing.JButton btCancelarGerReserva;
     private javax.swing.JButton btCancelarQuarto;
-    private javax.swing.JButton btEmitir;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btExcluirCli;
     private javax.swing.JButton btExcluirCliente;
@@ -2555,6 +2709,10 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btListarFuncionario;
     private javax.swing.JButton btListarQuartos;
     private javax.swing.JButton btListarReservas;
+    private javax.swing.JButton btRelCli;
+    private javax.swing.JButton btRelFunc;
+    private javax.swing.JButton btRelQua;
+    private javax.swing.JButton btRelRes;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSairAltQua;
     private javax.swing.JButton btSairCadastro;
@@ -2570,6 +2728,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JButton btVoltarGerFunc;
     private javax.swing.JButton btVoltarGerQuarto;
     private javax.swing.JButton btVoltarListar;
+    private javax.swing.JButton btVoltarRel;
     private javax.swing.JTextField campoAlterarPreco;
     private javax.swing.JTextField campoBairro;
     private javax.swing.JTextField campoBairroAlt;
@@ -2629,6 +2788,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JFrame frameListarFuncionarios;
     private javax.swing.JFrame frameListarQuartos;
     private javax.swing.JFrame frameListarReservas;
+    private javax.swing.JFrame frameRelatorios;
     private javax.swing.JSpinner giratorioNumQuarto;
     private javax.swing.JSpinner giratorioNumQuartoAlt;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -2691,6 +2851,7 @@ public class GerenciamentoFrame extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

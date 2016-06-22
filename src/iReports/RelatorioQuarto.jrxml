@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioQuarto" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="344eef98-8160-41e1-aa92-815ad48fb838">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     *
+FROM
+     `quarto` quarto]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorDiario" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="arCondicionado" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="wifi" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="frigobar" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="numero">
+		<groupExpression><![CDATA[$F{numero}]]></groupExpression>
+	</group>
+	<group name="tipo">
+		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<group name="valorDiario">
+		<groupExpression><![CDATA[$F{valorDiario}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="3e372d2e-8549-4267-a563-d86da0225210"/>
+				<textElement>
+					<font fontName="Arial" size="60"/>
+				</textElement>
+				<text><![CDATA[Relatório de quartos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="20" uuid="12e474e7-512b-485a-8e16-6cf7f058248e"/>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="83" height="20" uuid="1722a951-28ba-493d-ae6b-3b21e31e1f0a"/>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="0" width="84" height="20" uuid="75b64b32-3444-4b44-b779-6802b91e2e06"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="0" width="55" height="20" uuid="0da380ce-c338-4d5a-883a-a22faa9ec9ba"/>
+				<text><![CDATA[Valor diário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="0" width="83" height="20" uuid="3dfe19f2-0b0a-4d4f-b6a6-aa2ef44ad2da"/>
+				<text><![CDATA[Ar condicionado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="0" width="51" height="20" uuid="578e2ba9-30f1-4b9d-bbe8-e80133cf5a0e"/>
+				<text><![CDATA[Wi-Fi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="2" width="50" height="20" uuid="829595f7-8915-4e55-ae0f-7434a8feddeb"/>
+				<text><![CDATA[Frigobar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="20" uuid="2b59a5ac-f28b-499b-a24d-f36eff3296f9"/>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="83" height="20" uuid="39925f74-6b05-4f82-bfdf-b123a9bd5429"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="0" width="84" height="20" uuid="c9b2c4af-5e5a-4083-b496-c74842a48dd0"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="55" height="20" uuid="3c480769-203a-43b7-a34a-d5983c9808b4"/>
+				<textFieldExpression><![CDATA[$F{valorDiario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="59" height="20" uuid="64d3379c-a74a-47be-b724-634a684b1077"/>
+				<textFieldExpression><![CDATA[$F{arCondicionado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="0" width="51" height="20" uuid="a17962ba-a0be-463d-8a31-f0bfd2414fbd"/>
+				<textFieldExpression><![CDATA[$F{wifi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="0" width="50" height="20" uuid="7593613c-989c-4598-8935-f468163c2ce0"/>
+				<textFieldExpression><![CDATA[$F{frigobar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

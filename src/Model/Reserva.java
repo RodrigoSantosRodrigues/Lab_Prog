@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Sandra
  */
-public class Reserva implements Relatorio{
+public class Reserva{
     Banco banco=new Banco();
     ResultSet rst;
     String status,nome;
@@ -126,10 +126,5 @@ public class Reserva implements Relatorio{
         finally{
             banco.desconectarDoBanco();
         }
-    }
-    
-    @Override
-    public void gerarRelatorio(int tipo){
-    }
-    
+    }    
 }
