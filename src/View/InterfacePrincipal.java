@@ -248,7 +248,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btCheckOut.setText("Check-Out");
+        btCheckOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/checkout.jpg"))); // NOI18N
+        btCheckOut.setText("Check Out");
         btCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btCheckOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
